@@ -1,22 +1,31 @@
 import React from "react";
 
-function Accordion(props :any) {
+type AccordionPropsType = {title :string, collapsed :boolean}
+
+function Accordion(props :AccordionPropsType) {
   console.log('Accordion rendering')
   return (
     <div>
-      <AccordionTitle title={ props.title }/>
-      <AccordionBody />
+      <AccordionTitle title={ props.title } />
+      <AccordionBody collapsed={ props.collapsed } />
     </div>
   )
 }
 
-const AccordionTitle = (props :any) => {
+type AccordionTitlePropsType = {title :string}
+
+const AccordionTitle = (props :AccordionTitlePropsType) => {
   console.log('AccordionTitle rendering')
   return <h2>{ props.title }</h2>
 }
 
-const AccordionBody = () => {
+type AccordionBodyPropsType = {collapsed :boolean}
+
+const AccordionBody = (props :AccordionBodyPropsType) => {
   console.log('AccordionBody rendering')
+  if (props.collapsed ) {
+    return <>This menu hasn't ready yet</>
+  }
   return (
     <ul>
       <li>Coffee</li>

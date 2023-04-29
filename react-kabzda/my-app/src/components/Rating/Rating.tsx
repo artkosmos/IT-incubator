@@ -1,7 +1,9 @@
 import Star from "../Star/Star";
 import React from "react";
 
-function Rating (props :any) {
+type PropsType = {value :number}
+
+function Rating (props :PropsType) {
   console.log('Rating rendering')
   if (props.value === 1) {
     return (
