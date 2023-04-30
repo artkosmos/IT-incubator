@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/artkosmos/IT-incubator.git/static/css/main.75015ace.css",
+    "main.js": "/artkosmos/IT-incubator.git/static/js/main.c4510daf.js",
+    "static/js/787.f99c86d6.chunk.js": "/artkosmos/IT-incubator.git/static/js/787.f99c86d6.chunk.js",
+    "index.html": "/artkosmos/IT-incubator.git/index.html",
+    "main.75015ace.css.map": "/artkosmos/IT-incubator.git/static/css/main.75015ace.css.map",
+    "main.c4510daf.js.map": "/artkosmos/IT-incubator.git/static/js/main.c4510daf.js.map",
+    "787.f99c86d6.chunk.js.map": "/artkosmos/IT-incubator.git/static/js/787.f99c86d6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.75015ace.css",
+    "static/js/main.c4510daf.js"
+  ]
+}
