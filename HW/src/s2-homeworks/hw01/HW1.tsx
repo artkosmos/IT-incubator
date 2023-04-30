@@ -3,7 +3,8 @@ import Message from './message/Message'
 import MessageSender from './message-sender/MessageSender'
 import s2 from '../../s1-main/App.module.css'
 import FriendMessage from './friend-message/FriendMessage'
-import avatar from './avatar.png'
+import avatar1 from './avatar1.png'
+import avatar2 from './avatar3.png'
 
 
 /*
@@ -34,7 +35,7 @@ type UserType = {
 export const message0: MessageType = {
     id: 0,
     user: {
-        avatar: avatar, // можно менять
+        avatar: avatar1, // можно менять
         name: 'Artem',  // можно менять
     },
     message: {
@@ -45,11 +46,11 @@ export const message0: MessageType = {
 export const friendMessage0: MessageType = {
     id: 100,
     user: {
-        avatar: avatar, // можно менять
-        name: 'Victor', // можно менять
+        avatar: avatar2, // можно менять
+        name: 'Angela', // можно менять
     },
     message: {
-        text: 'Oh, hey. I\'m fine. Would you like to go to the cinema today?', // можно менять
+        text: 'Oh, hey. I\'m fine.\nWould you like to watch movie today?', // можно менять
         time: '21:55', // можно менять
     },
 }
