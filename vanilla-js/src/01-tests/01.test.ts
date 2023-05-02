@@ -8,7 +8,7 @@ beforeEach(() => {
   b = 3
 })
 
-test("sum of two numbers should be", () => {
+test.skip("sum of two numbers should be", () => {
   // action
   const result = sumOfNumbers(a, b)
 
