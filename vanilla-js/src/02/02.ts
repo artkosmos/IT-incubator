@@ -12,7 +12,7 @@ type TechType = {
   id: number
   title: string
 }
-type PersonType = {
+export type PersonType = {
   id: number
   name: string
   age: number
