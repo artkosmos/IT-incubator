@@ -8,8 +8,8 @@ function App() {
   console.log('App rendering')
   return (
     <div>
-      <div><OnOff toggle={true}/></div>
-      <div><OnOff toggle={false}/></div>
+      <div><OnOff/></div>
+      <div><OnOff/></div>
       <div className='stars'>
         <AppTitle title={'This is React App'} type={1}/>
         <AppTitle title={'Rate it, please'} type={3}/>

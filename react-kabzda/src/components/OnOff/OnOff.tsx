@@ -1,18 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 
-type OnOffPropsType = {
-  toggle: boolean
-}
+export const OnOff = () => {
 
-export const OnOff = (props: OnOffPropsType) => {
+  const [toggle, setToggle] = useState(false)
+
   return (
     <WrapperMain>
       <WrapperSecond>
-        <Square1 toggle={props.toggle}></Square1>
-        <Square2 toggle={props.toggle}></Square2>
+        <Square1 toggle={toggle} onClick={()=> setToggle(true)}>On</Square1>
+        <Square2 toggle={toggle} onClick={()=> setToggle(false)}>Off</Square2>
       </WrapperSecond>
-      <Circle toggle={props.toggle}></Circle>
+      <Circle toggle={toggle}></Circle>
     </WrapperMain>
   );
 };
@@ -29,16 +28,18 @@ const WrapperSecond = styled.div`
   gap: 5px;
 `
 const Square1 = styled.div<{ toggle: boolean }>`
-  background-color: ${props => props.toggle ? 'green' : 'grey'};
+  background-color: ${props => props.toggle ? 'green' : 'white'};
   width: 50px;
   height: 50px;
   border: 3px solid;
+  text-align: center;
 `
 const Square2 = styled.div<{ toggle: boolean }>`
-  background-color: ${props => props.toggle ? 'grey' : 'red'};
+  background-color: ${props => props.toggle ? 'white' : 'red'};
   width: 50px;
   height: 50px;
   border: 3px solid;
+  text-align: center;
 `
 const Circle = styled.div<{ toggle: boolean }>`
   background-color: ${props => props.toggle ? 'green' : 'red'};
