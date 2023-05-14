@@ -13,13 +13,11 @@ type TodosType = {
 function App() {
 
   const [todos, setTodos] = useState<TodosType[]>([])
-
-  // const [text, setText] = useState('')
+  console.log(todos)
+  /*const [text, setText] = useState('')*/
 
   let myRef = useRef<HTMLInputElement>(null)
   // useRef хранит в себе переменную, не ререндерив компонент при каждом ее изменении
-
-  console.log(myRef.current)
 
   // получение данных с сервера
   /*useEffect(() => {
@@ -54,13 +52,16 @@ function App() {
       let newTask: TodosType = {userId: 1, id: todos.length + 1, title: myRef.current.value, completed: false}
       setTodos([newTask, ...todos])
       myRef.current.value = ''
+    } else {
+      console.log('input value is missing')
     }
   }
 
   return (
     <div className="App">
       <div>
-        <Input ref={myRef}/>
+        <input type="text" ref={myRef}/>
+        {/*<Input setText={setText} value={text}/>*/}
         <Button name={'add'} callBack={addTaskHandlerSecond}/>
       </div>
       <div>
