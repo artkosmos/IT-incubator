@@ -55,15 +55,13 @@ function App() {
   })
 
 
-  function removeTask(id: string) {
-    /*let filteredTasks = tasks.filter(t => t.id != id);
-    setTasks(filteredTasks);*/
+  function removeTask(ToDoListID: string, taskID: string) {
+    setTasks({...tasks, [ToDoListID]: tasks[ToDoListID].filter(item => item.id !== taskID)})
   }
 
-  function addTask(title: string) {
-    /*let task = {id: v1(), title: title, isDone: false};
-    let newTasks = [task, ...tasks];
-    setTasks(newTasks);*/
+  function addTask(ToDoListID: string, title: string) {
+    const newTask: TaskType = {id: v1(), title: title, isDone: true}
+    setTasks({...tasks, [ToDoListID]: [newTask, ...tasks[ToDoListID]]})
   }
 
   function changeStatus(taskId: string, isDone: boolean) {
