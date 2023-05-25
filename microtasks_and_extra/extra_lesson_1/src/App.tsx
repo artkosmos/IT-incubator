@@ -21,7 +21,7 @@ let defaultMoney: MoneyType[] = [
   {id: 8, banknotes: 'Rubles', value: 50, number: ' v1234567890'},
 ]
 
-// функция фильтрации
+//  функция фильтрации
 export const moneyFilter = (money: MoneyType[], filter: BanknotesType): MoneyType[] => {
   if (filter !== 'All') {
     return money.filter((item) => item.banknotes === filter)
