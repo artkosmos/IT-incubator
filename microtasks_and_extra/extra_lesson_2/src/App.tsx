@@ -18,7 +18,6 @@ export type TasksType = {
 
 export type FilterValuesType = "all" | "active" | "completed";
 
-
 function App() {
 
   const [todo, setTodo] = useState<Array<ObjectType>>([
