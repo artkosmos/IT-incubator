@@ -17,7 +17,7 @@ function App() {
   /*const [text, setText] = useState('')*/
 
   let myRef = useRef<HTMLInputElement>(null)
-  // useRef хранит в себе переменную, не ререндерив компонент при каждом ее изменении
+  //  useRef хранит в себе переменную, не ререндерив компонент при каждом ее изменении
 
   // получение данных с сервера
   /*useEffect(() => {
