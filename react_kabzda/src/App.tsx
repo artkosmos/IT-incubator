@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import Accordion from "./components/Accordion/Accordion";
-import Rating from "./components/Rating/Rating";
+import Rating, {RatingValueType} from "./components/Rating/Rating";
 import {OnOff} from "./components/OnOff/OnOff";
 import SelfControlledAccordion from "./components/Accordion/SelfControlledAccordion";
-import SelfControlledRating from "./components/Rating/SelfControlledRating";
 
 function App() {
   console.log('App rendering')
+
+  const [ratingValue, setRatingValue] = useState<RatingValueType>(4)
+
   return (
     <div>
       <div><OnOff/></div>
@@ -15,7 +16,7 @@ function App() {
       <div className='stars'>
         <AppTitle title={'This is React App'} type={1}/>
         {/*<AppTitle title={'Rate it, please'} type={3}/>*/}
-        {/*<Rating value={4}/>*/}
+        <Rating value={ratingValue} callBack={(value) => setRatingValue(value)}/>
       </div>
       <div className='list'>
         {/*<Accordion title={"Our drink menu"} collapsed={false}/>*/}
@@ -23,7 +24,7 @@ function App() {
         {/*<Accordion title={"Our desserts menu"} collapsed={true}/>*/}
         <AppTitle title={'Rate it, please'} type={2}/>
         {/*<Rating value={2}/>*/}
-        <SelfControlledRating/>
+        {/*<SelfControlledRating/>*/}
       </div>
     </div>
   );

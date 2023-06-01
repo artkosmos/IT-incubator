@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 
-type SelfControlledAccordionPropsType = { title: string }
+type SelfControlledAccordionPropsType = {
+  title: string
+}
 
 function SelfControlledAccordion(props: SelfControlledAccordionPropsType) {
   console.log('Accordion rendering')
@@ -13,16 +15,20 @@ function SelfControlledAccordion(props: SelfControlledAccordionPropsType) {
 
   return (
     <div>
-      <SelfControlledAccordionTitle title={props.title}/>
-      <button onClick={onClickHandler}>Show menu</button>
+      <SelfControlledAccordionTitle callBack={onClickHandler} title={props.title}/>
       {collapsed && <SelfControlledAccordionBody/>}
     </div>
   )
 }
 
-const SelfControlledAccordionTitle = (props: SelfControlledAccordionPropsType) => {
+type SelfControlledAccordionTitlePropsType = {
+  title: string
+  callBack: () => void
+}
+
+const SelfControlledAccordionTitle = (props: SelfControlledAccordionTitlePropsType) => {
   console.log('AccordionTitle rendering')
-  return <h2>{props.title}</h2>
+  return <h2 onClick={props.callBack}>{props.title}</h2>
 }
 
 const SelfControlledAccordionBody = () => {
