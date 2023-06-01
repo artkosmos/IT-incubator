@@ -1,14 +1,19 @@
 import React from "react";
 
-type PropsType = {selected :boolean}
+type StarValueType = 1 | 2 | 3 | 4 | 5
 
-function Star(props :PropsType) {
+type PropsType = {
+  selected: boolean
+  value: StarValueType
+  callBack: (value: StarValueType) => void
+}
+
+function Star(props: PropsType) {
   console.log('Star rendering')
-  if (props.selected) {
-    return <span><b>*  </b></span>
-  }
   return (
-    <span>*  </span>
+    <span onClick={() => props.callBack(props.value)}>
+      {props.selected ? <b>star </b> : <>star </>}
+    </span>
   )
 }
 
