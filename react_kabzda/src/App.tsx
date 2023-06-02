@@ -9,7 +9,7 @@ import {ControlledOnOff} from "./components/OnOff/ControlledOnOff";
 function App() {
   console.log('App rendering')
 
-  const [ratingValue, setRatingValue] = useState<RatingValueType>(4)
+  const [ratingValue, setRatingValue] = useState<RatingValueType>(0)
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [toggle, setToggle] = useState<boolean>(false)
 
