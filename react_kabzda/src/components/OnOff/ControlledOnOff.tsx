@@ -8,11 +8,19 @@ type ControlledOnOffPropsType = {
 
 export const ControlledOnOff = (props: ControlledOnOffPropsType) => {
 
+  const onClickOnHandler = () => {
+    props.callBack(true)
+  }
+
+  const onClickOffHandler = () => {
+    props.callBack(false)
+  }
+
   return (
     <Wrapper1>
       <Wrapper2>
-        <Square1 toggle={props.toggle} onClick={() => props.callBack(true)}>On</Square1>
-        <Square2 toggle={props.toggle} onClick={() => props.callBack(false)}>Off</Square2>
+        <Square1 toggle={props.toggle} onClick={onClickOnHandler}>On</Square1>
+        <Square2 toggle={props.toggle} onClick={onClickOffHandler}>Off</Square2>
       </Wrapper2>
       <Circle toggle={props.toggle}></Circle>
     </Wrapper1>

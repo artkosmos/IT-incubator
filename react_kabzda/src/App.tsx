@@ -20,7 +20,7 @@ function App() {
       <div className='stars'>
         <AppTitle title={'This is React App'} type={1}/>
         {/*<AppTitle title={'Rate it, please'} type={3}/>*/}
-        <Rating value={ratingValue} callBack={(value) => setRatingValue(value)}/>
+        <Rating value={ratingValue} callBack={setRatingValue}/>
       </div>
       <div className='list'>
         <Accordion title={"Our drink menu"} collapsed={isCollapsed} callBack={() => {setIsCollapsed(!isCollapsed)}}/>

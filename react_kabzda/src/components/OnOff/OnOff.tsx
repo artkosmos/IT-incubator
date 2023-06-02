@@ -5,11 +5,19 @@ export const OnOff = () => {
 
   const [toggle, setToggle] = useState(false)
 
+  const onClickOnHandler = () => {
+    setToggle(true)
+  }
+
+  const onClickOffHandler = () => {
+    setToggle(false)
+  }
+
   return (
     <WrapperMain>
       <WrapperSecond>
-        <Square1 toggle={toggle} onClick={()=> setToggle(true)}>On</Square1>
-        <Square2 toggle={toggle} onClick={()=> setToggle(false)}>Off</Square2>
+        <Square1 toggle={toggle} onClick={onClickOnHandler}>On</Square1>
+        <Square2 toggle={toggle} onClick={onClickOffHandler}>Off</Square2>
       </WrapperSecond>
       <Circle toggle={toggle}></Circle>
     </WrapperMain>
