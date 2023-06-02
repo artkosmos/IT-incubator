@@ -1,6 +1,6 @@
 import React from "react";
 import {PagesType} from "../../dataState/dataState";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {Error404} from "./Error404";
 
 type PropsType = {
@@ -10,18 +10,28 @@ type PropsType = {
 export const Page = (props: PropsType) => {
 
   const params = useParams()
-  console.log(params)
+  const navigate = useNavigate()
 
   const infoID = Number(params.id)
 
+  const onClickMainPageHandler = () => {
+    navigate('/')
+  }
+
+  const onClickGoBackHandler = () => {
+    navigate(-1)
+  }
 
   return (
     <div>
       {props.pages[infoID]
-        ? <div>{props.pages[infoID].heading}{props.pages[infoID].about}</div>
+        ? <div>
+            <p>{props.pages[infoID].heading}</p>
+            <p>{props.pages[infoID].about}</p>
+          </div>
         : <Error404/>}
-      <button>Main page</button>
-      <button>Go Back</button>
+      <button onClick={onClickMainPageHandler}>Main page</button>
+      <button onClick={onClickGoBackHandler}>Go Back</button>
     </div>
   )
 }

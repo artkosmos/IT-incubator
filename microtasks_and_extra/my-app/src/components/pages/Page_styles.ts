@@ -15,7 +15,7 @@ const NavWrapper = styled.div`
   }
 
   & > a:hover {
-    color: steelblue; /* Цвет ссылки */
+    color: steelblue;
   }
 `
 
