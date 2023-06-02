@@ -10,17 +10,18 @@ type PropsType = {
 export const Page = (props: PropsType) => {
 
   const params = useParams()
+  console.log(params)
 
   const infoID = Number(params.id)
 
-  if (isNaN(infoID)) {
-    return <Error404/>
-  }
 
   return (
     <div>
-      {props.pages[infoID].heading}
-      {props.pages[infoID].about}
+      {props.pages[infoID]
+        ? <div>{props.pages[infoID].heading}{props.pages[infoID].about}</div>
+        : <Error404/>}
+      <button>Main page</button>
+      <button>Go Back</button>
     </div>
   )
 }
