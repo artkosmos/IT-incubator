@@ -5,7 +5,8 @@ import Rating, {RatingValueType} from "./Rating";
 
 const meta: Meta<typeof Rating> = {
   title: 'Rating',
-  component: Rating
+  component: Rating,
+  argTypes: { callBack: { action: 'onclick returned value' } },
 }
 
 export default meta
