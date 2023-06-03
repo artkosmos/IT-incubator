@@ -80,6 +80,11 @@ const superUser = {
 // NB!!! Все преобразования выполняем иммьютабельно, если не сказано иное
 
 //1. Создайте полную (глубокую) копию объекта user ++++
+const userCopy = structuredClone(user)
+userCopy.name = 'John'
+userCopy.age = 31
+console.log(userCopy)
+
 
 //2. Создайте полную (глубокую) массива students ++++
 
