@@ -108,6 +108,8 @@ const studentsCopyFiltered = students.filter(item => item.scores >= 100)
 console.log(studentsCopyFiltered)
 
 //6. Сформируйте массив имён студентов (map)
+const studentsCopyNames = students.map(item => item.name)
+console.log(studentsCopyNames)
 
 //7. Добавьте всем студентам свойство "isStudent" со значением true (map)
 
