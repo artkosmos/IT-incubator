@@ -173,6 +173,20 @@ console.log(studentsCopySumOfScores)
 // и добавляет к каждому студенту свойство "friends",
 // значением которого является массив имён всех остальных студентов из массива students,
 // за исключением собственного имени студента. Т.е. в друзьях у Боба Боба быть не должно.
+const addFriends = (array) => {
+  const arrayCopy = structuredClone(array)
+  for (let i = 0; i < arrayCopy.length; i++) {
+    const currentStudent = arrayCopy[i]
+    const currentStudentsFriends = arrayCopy
+      .filter((item) => item.id !== currentStudent.id)
+      .map(item => item.name)
+
+    arrayCopy[i]['friends'] = currentStudentsFriends
+  }
+  return arrayCopy
+}
+
+console.log(addFriends(students))
 
 
 // 15. Д.З.: Напишите функцию getBestStudents, которая принимает параметром
