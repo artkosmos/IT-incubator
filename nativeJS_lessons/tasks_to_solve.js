@@ -94,6 +94,10 @@ console.log(studentsCopy)
 
 
 //3. Создайте полную (глубокую) копию объекта superUser
+const superUserCopy = {...superUser, friends: superUser.friends.map(item => ({...item}))}
+superUserCopy.friends[0].age = 101
+console.log(superUserCopy)
+
 
 //4. Отсортируйте students по успеваемости (лучший идёт первым)(sort)
 
