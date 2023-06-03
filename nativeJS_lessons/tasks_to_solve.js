@@ -100,6 +100,8 @@ console.log(superUserCopy)
 
 
 //4. Отсортируйте students по успеваемости (лучший идёт первым)(sort)
+const studentsCopySortedByScore = students.map(item => ({...item})).sort((a, b) => b.scores - a.scores)
+console.log(studentsCopySortedByScore)
 
 //5. Сформируйте массив студентов, у которых 100 и более баллов (filter)
 
