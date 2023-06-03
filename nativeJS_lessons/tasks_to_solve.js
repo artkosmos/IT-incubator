@@ -195,3 +195,19 @@ console.log(addFriends(students))
 // getBestStudents(students) => {name: "Nick", age: 20, isMarried: false, scores: 120}
 // getBestStudents(students, 3) => [{...}, {...}, {...}]
 // getBestStudents(students, 10) => [{}, {}, ...., {}, null, null, null, null ]
+
+const getBestStudents = (array, quantity = 1) => {
+  if (quantity === 1) {
+    return [...array].sort((a, b) => a.scores - b.scores).at(-1)
+  }
+  const sortedArray = [...array].sort((a, b) => b.scores - a.scores)
+  const arrayOfBestStudents = new Array(quantity).fill(null)
+  for (let i = 0; i < quantity; i++) {
+    if (sortedArray[i]) {
+      arrayOfBestStudents[i] = sortedArray[i]
+    }
+  }
+  return arrayOfBestStudents
+}
+
+console.log(getBestStudents(students,10))
