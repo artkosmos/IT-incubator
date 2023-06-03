@@ -1,81 +1,81 @@
 const students = [
-    {
-        id: 1,
-        name: "Bob",
-        age: 22,
-        isMarried: true,
-        scores: 85,
-        // к 14 задаче: friends: ["Alex", "Nick", "John", "Helen", "Ann"]
-    },
-    {
-        id: 2,
-        name: "Alex",
-        age: 21,
-        isMarried: true,
-        scores: 90,
-    },
-    {
-        id: 3,
-        name: "Nick",
-        age: 20,
-        isMarried: false,
-        scores: 120
-    },
-    {
-        id: 4,
-        name: "John",
-        age: 19,
-        isMarried: false,
-        scores: 100
-    },
-    {
-        id: 5,
-        name: "Helen",
-        age: 20,
-        isMarried: false,
-        scores: 110
-    },
-    {
-        id: 6,
-        name: "Ann",
-        age: 20,
-        isMarried: false,
-        scores: 105
-    },
+  {
+    id: 1,
+    name: "Bob",
+    age: 22,
+    isMarried: true,
+    scores: 85,
+    // к 14 задаче: friends: ["Alex", "Nick", "John", "Helen", "Ann"]
+  },
+  {
+    id: 2,
+    name: "Alex",
+    age: 21,
+    isMarried: true,
+    scores: 90,
+  },
+  {
+    id: 3,
+    name: "Nick",
+    age: 20,
+    isMarried: false,
+    scores: 120
+  },
+  {
+    id: 4,
+    name: "John",
+    age: 19,
+    isMarried: false,
+    scores: 100
+  },
+  {
+    id: 5,
+    name: "Helen",
+    age: 20,
+    isMarried: false,
+    scores: 110
+  },
+  {
+    id: 6,
+    name: "Ann",
+    age: 20,
+    isMarried: false,
+    scores: 105
+  },
 ];
 
 const user = {
-    name: "Bob",
-    age: 23,
-    friends: ["Alex", "Nick", "John"]
+  name: "Bob",
+  age: 23,
+  friends: ["Alex", "Nick", "John"]
 }
 
 const superUser = {
-    name: "Bob",
-    age: 23,
-    friends: [
-        {
-            id: 1,
-            name: "Ann",
-            age: 22,
-            isMarried: true,
-            scores: 85
-        },
-        {
-            id: 2,
-            name: "Alex",
-            age: 21,
-            isMarried: true,
-            scores: 90,
-        },
-        {
-            id: 4,
-            name: "John",
-            age: 19,
-            isMarried: false,
-            scores: 100
-        }
-    ]
+  name: "Bob",
+  age: 23,
+  friends: [
+    {
+      id: 1,
+      name: "Ann",
+      age: 22,
+      isMarried: true,
+      scores: 85
+    },
+    {
+      id: 2,
+      name: "Alex",
+      age: 21,
+      isMarried: true,
+      scores: 90,
+    },
+    {
+      id: 4,
+      name: "John",
+      age: 19,
+      isMarried: false,
+      scores: 100
+    }
+  ]
 }
 // NB!!! Все преобразования выполняем иммьютабельно, если не сказано иное
 
@@ -132,8 +132,15 @@ console.log(studentsCopyChangeMarried)
 const superUserCopyDeletedById = {...superUser, friends: superUser.friends.filter(item => item.id !== 1)}
 console.log(superUserCopyDeletedById)
 
+
 //10. поменяйте объекту с id=2 из массива  friends значение св-ва name на
 // "Donald"
+const superUserCopyChangeNameById = {
+  ...superUser, friends: superUser.friends.map(item => item.id === 2
+    ? {...item, name: 'Donald'}
+    : item)
+}
+console.log(superUserCopyChangeNameById)
 
 //11. добавьте в список друзей нового друга
 
