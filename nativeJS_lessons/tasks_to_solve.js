@@ -103,20 +103,27 @@ console.log(superUserCopy)
 const studentsCopySortedByScore = students.map(item => ({...item})).sort((a, b) => b.scores - a.scores)
 console.log(studentsCopySortedByScore)
 
+
 //5. Сформируйте массив студентов, у которых 100 и более баллов (filter)
 const studentsCopyFiltered = students.filter(item => item.scores >= 100)
 console.log(studentsCopyFiltered)
+
 
 //6. Сформируйте массив имён студентов (map)
 const studentsCopyNames = students.map(item => item.name)
 console.log(studentsCopyNames)
 
+
 //7. Добавьте всем студентам свойство "isStudent" со значением true (map)
 const studentsCopyAddProperties = students.map(item => ({...item, isStudent: true}))
 console.log(studentsCopyAddProperties)
 
+
 //8. Nick женился. Выполните соответствующие преобразование массива
 // students (map)
+const studentsCopyChangeMarried = students.map(item => item.name === 'Nick' ? {...item, isMarried: true} : item)
+console.log(studentsCopyChangeMarried)
+
 
 // Внесите  следующие изменения в объект superUser:
 // NB!!! Все преобразования выполняем иммьютабельно, если не сказано иное
