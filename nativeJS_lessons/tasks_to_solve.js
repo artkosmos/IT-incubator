@@ -104,6 +104,8 @@ const studentsCopySortedByScore = students.map(item => ({...item})).sort((a, b) 
 console.log(studentsCopySortedByScore)
 
 //5. Сформируйте массив студентов, у которых 100 и более баллов (filter)
+const studentsCopyFiltered = students.filter(item => item.scores >= 100)
+console.log(studentsCopyFiltered)
 
 //6. Сформируйте массив имён студентов (map)
 
