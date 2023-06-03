@@ -129,6 +129,8 @@ console.log(studentsCopyChangeMarried)
 // NB!!! Все преобразования выполняем иммьютабельно, если не сказано иное
 
 //9.Удалите объект с id=1 из массива  friends
+const superUserCopyDeletedById = {...superUser, friends: superUser.friends.filter(item => item.id !== 1)}
+console.log(superUserCopyDeletedById)
 
 //10. поменяйте объекту с id=2 из массива  friends значение св-ва name на
 // "Donald"
