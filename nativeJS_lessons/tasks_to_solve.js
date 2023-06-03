@@ -162,14 +162,15 @@ for (let i = 0; i < students.length; i++) {
 }
 console.log(student.name)
 
-//13. Найдите сумму баллов всех студентов (reduce)*
 
-// «arr.reduce(callback[, initialValue])» 
-//callback(previousValue, currentItem, index, arr):
+//13. Найдите сумму баллов всех студентов (reduce)*
+const studentsCopySumOfScores = students.reduce((acc, item) => acc + item.scores, 0)
+console.log(studentsCopySumOfScores)
+
 
 // 14. Д.З.:
 // Напишите функцию addFriends, которая принимает параметром массив students
-// и добавляет в каждому студенту свойство "friends",
+// и добавляет к каждому студенту свойство "friends",
 // значением которого является массив имён всех остальных студентов из массива students,
 // за исключением собственного имени студента. Т.е. в друзьях у Боба Боба быть не должно.
 
