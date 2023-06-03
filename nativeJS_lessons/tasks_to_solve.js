@@ -87,6 +87,11 @@ console.log(userCopy)
 
 
 //2. Создайте полную (глубокую) массива students ++++
+const studentsCopy = students.map(item => ({...item}))
+studentsCopy[0].age = 56
+studentsCopy[2].scores = 5
+console.log(studentsCopy)
+
 
 //3. Создайте полную (глубокую) копию объекта superUser
 
