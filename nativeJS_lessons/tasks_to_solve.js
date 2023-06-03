@@ -112,6 +112,8 @@ const studentsCopyNames = students.map(item => item.name)
 console.log(studentsCopyNames)
 
 //7. Добавьте всем студентам свойство "isStudent" со значением true (map)
+const studentsCopyAddProperties = students.map(item => ({...item, isStudent: true}))
+console.log(studentsCopyAddProperties)
 
 //8. Nick женился. Выполните соответствующие преобразование массива
 // students (map)
