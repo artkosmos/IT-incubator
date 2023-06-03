@@ -143,6 +143,9 @@ const superUserCopyChangeNameById = {
 console.log(superUserCopyChangeNameById)
 
 //11. добавьте в список друзей нового друга
+const newFriend = { id: 6, name: 'Adolf', age: 47, isMarried: false, scores: 199 }
+const superUserCopyAddedFriend = {...superUser, friends: [...superUser.friends, newFriend]}
+console.log(superUserCopyAddedFriend)
 
 // И поднимаем руку!!!!
 
