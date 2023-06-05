@@ -77,6 +77,7 @@ let man4 = {
 
 let man4FullCopy = {...man4, mother: {...man4.mother, work: {...man4.mother.work}}}
 
+
 // 8 Array of objects inside object -> object
 let man5 = {
   name: 'John',
@@ -95,7 +96,9 @@ let man5 = {
   }
 };
 
-let man5FullCopy //  your code
+let man5FullCopy = {
+  ...man5, mother: {...man5.mother, work: {...man5.mother.work}, parents: man5.mother.parents.map(item => ({...item}))}
+}
 
 
 // 9 Object inside an object -> array -> object ->  object
