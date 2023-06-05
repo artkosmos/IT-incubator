@@ -58,7 +58,7 @@ let man3 = {
   ]
 };
 
-let man3FullCopy //  your code
+let man3FullCopy = {...man3, friends: man3.friends.map(item => ({...item}))}
 
 
 // 7 Object inside an object, inside an object
