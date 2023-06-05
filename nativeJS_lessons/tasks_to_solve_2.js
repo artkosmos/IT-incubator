@@ -10,7 +10,7 @@ let manFullCopy = {...man}
 // 2. Array of primitives
 let numbers = [1, 2, 3];
 
-let numbersFullCopy  //  your code
+let numbersFullCopy = [...numbers]
 
 
 // 3. Object inside an object
