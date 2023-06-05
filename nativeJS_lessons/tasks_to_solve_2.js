@@ -23,7 +23,7 @@ let man1 = {
   }
 };
 
-let man1FullCopy // your code
+let man1FullCopy = {...man1, mother: {...man1.mother}}
 
 
 // 4. Array of primitives inside an object
