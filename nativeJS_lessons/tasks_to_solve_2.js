@@ -178,5 +178,15 @@ let man7 = {
   }
 };
 
-let man7FullCopy  //  your code
+let man7FullCopy = {
+  ...man7,
+  mother: {...man7.mother,
+    work: {...man7.mother.work},
+    parents: man7.mother.parents.map((item) => {
+      return {...item, favoriteDish: {...item.favoriteDish, ingredients: item.favoriteDish.ingredients.map(item => ({...item}))}}
+    })}
+}
+man7FullCopy.mother.parents[0].favoriteDish.ingredients[1].title = 'pasta'
+console.log(man7.mother.parents[0].favoriteDish.ingredients[1].title)
+console.log(man7FullCopy.mother.parents[0].favoriteDish.ingredients[1].title)
 
