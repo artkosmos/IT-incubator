@@ -4,7 +4,7 @@ let man = {
   age: 28
 };
 
-let manFullCopy  //  your code
+let manFullCopy = {...man}
 
 
 // 2. Array of primitives
