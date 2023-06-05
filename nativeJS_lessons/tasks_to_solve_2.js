@@ -44,7 +44,7 @@ let people = [
 ];
 
 
-let peopleFullCopy  // your code
+let peopleFullCopy = people.map(item => ({...item}))
 
 
 // 6 Array of objects inside object
