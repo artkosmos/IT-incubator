@@ -33,7 +33,7 @@ let man2 = {
   friends: ["Peter", "Steven", "William"]
 };
 
-let man2FullCopy  // your code
+let man2FullCopy = {...man2, friends: [...man2.friends]}
 
 
 // 5 Array of objects
