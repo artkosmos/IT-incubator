@@ -131,7 +131,12 @@ let man6 = {
   }
 };
 
-let man6FullCopy  //  your code
+let man6FullCopy = {
+  ...man6,
+    mother: {...man6.mother,
+      work: {...man6.mother.work},
+      parents: man6.mother.parents.map((item) => ({...item, favoriteDish: {...item.favoriteDish}}))}
+}
 
 
 //10 Array of objects inside an object -> object -> array -> object ->  object
