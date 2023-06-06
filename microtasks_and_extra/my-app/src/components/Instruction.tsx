@@ -9,8 +9,7 @@ export const Instruction = () => {
     <div>
       <div className={style.instruction}>
         <div className={style.contentWrapper}>
-          <Input/>
-          <Input/>
+          <Display using={'instruction'} counter={1} maxValue={1}/>
           <div className={style.buttonsArea}>
             <Button using={'instruction'} callBack={()=>{}}>SET</Button>
           </div>

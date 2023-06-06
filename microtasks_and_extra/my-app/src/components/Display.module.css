@@ -14,3 +14,31 @@
   color: red;
   font-size: 50px;
 }
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.orange {
+  background-color: rgba(236, 137, 96, 0.8);
+}
+
+.instruction {
+  background-color: rgba(236, 137, 96, 0.8);
+  font-size: 18px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputLine {
+  display: flex;
+  justify-content: space-around;
+}
