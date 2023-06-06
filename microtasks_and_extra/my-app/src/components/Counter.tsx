@@ -21,7 +21,7 @@ export const Counter: React.FC<CounterPropsType> = ({
   return (
     <div className={style.counter}>
       <div className={style.contentWrapper}>
-        <Display maxValue={maxValue} counter={currentValue}/>
+        <Display minValue={minValue} maxValue={maxValue} counter={currentValue}/>
         <div className={style.buttonsArea}>
           <Button using={'counter'} callBack={increment} disabled={currentValue === maxValue}>ADD</Button>
           <Button using={'counter'} callBack={reset} disabled={currentValue === minValue}>RESET</Button>

@@ -6,9 +6,8 @@ import {Instruction} from "./components/Instruction";
 
 function App() {
 
-  const maxValue: number = 5
-  const minValue: number = 0
-
+  const [maxValue, setMaxValue] = useState<number>(2)
+  const [minValue, setMinValue] = useState<number>(1)
   const [counter, setCounter] = useState<number>(minValue)
 
   const increment = () => {
@@ -19,6 +18,7 @@ function App() {
     setCounter(minValue)
   }
 
+
   return (
     <div className={s.mainContentWrapper}>
       <Counter
@@ -28,7 +28,12 @@ function App() {
         reset={reset}
         currentValue={counter}
       />
-      <Instruction/>
+      <Instruction
+        minValue={minValue}
+        setMinValue={setMinValue}
+        maxValue={maxValue}
+        setMaxValue={setMaxValue}
+      />
     </div>
   )
 }

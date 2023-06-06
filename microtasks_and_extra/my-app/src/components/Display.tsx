@@ -3,24 +3,31 @@ import style from "./Display.module.css";
 import {Input} from "./Input";
 
 type DisplayPropsType = {
-  counter: number
+  counter?: number
   maxValue: number
+  minValue: number
   using?: string
+  setMinValue?: (value: number) => void
+  setMaxValue?: (value: number) => void
+
 }
 
 
 export const Display: React.FC<DisplayPropsType> = ({
                                                       counter,
                                                       maxValue,
-                                                      using
+                                                      using,
+                                                      minValue,
+                                                      setMaxValue,
+                                                      setMinValue
                                                     }) => {
 
   if (using === 'instruction') {
     return (
       <div className={`${style.scoreboard} ${style.instruction}`}>
         <div className={style.inputWrapper}>
-            <Input type={'number'} spanValue={'max value'}/>
-            <Input type={'number'} spanValue={'start value'}/>
+          <Input value={maxValue} type={'number'} spanValue={'max value'}/>
+          <Input value={minValue} type={'number'} spanValue={'start value'}/>
         </div>
       </div>
     )
