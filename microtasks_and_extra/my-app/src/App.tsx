@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import s from './App.module.css';
 import {Counter} from "./components/Counter";
+import {Instruction} from "./components/Instruction";
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
   }
 
   return (
-    <div className={s.mainContent}>
+    <div className={s.mainContentWrapper}>
       <Counter
         maxValue={maxValue}
         minValue={minValue}
@@ -27,6 +28,7 @@ function App() {
         reset={reset}
         currentValue={counter}
       />
+      <Instruction/>
     </div>
   )
 }

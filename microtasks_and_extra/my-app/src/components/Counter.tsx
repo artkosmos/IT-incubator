@@ -20,11 +20,11 @@ export const Counter: React.FC<CounterPropsType> = ({
                                                     }) => {
   return (
     <div className={style.counter}>
-      <div className={style.counterWrapper}>
+      <div className={style.contentWrapper}>
         <Display maxValue={maxValue} counter={currentValue}/>
         <div className={style.buttonsArea}>
-          <Button callBack={increment} disabled={currentValue === maxValue}>ADD</Button>
-          <Button callBack={reset} disabled={currentValue === minValue}>RESET</Button>
+          <Button using={'counter'} callBack={increment} disabled={currentValue === maxValue}>ADD</Button>
+          <Button using={'counter'} callBack={reset} disabled={currentValue === minValue}>RESET</Button>
         </div>
       </div>
     </div>

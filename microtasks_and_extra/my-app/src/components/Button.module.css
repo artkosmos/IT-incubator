@@ -1,7 +1,6 @@
 .button {
-  background-color: aqua;
   width: 80px;
-  height: 20px;
+  height: 25px;
   font-weight: bold;
   letter-spacing: 0.02rem;
   border-style: none;
@@ -20,4 +19,12 @@
   background-color: rgba(246, 20, 20, 0.5);
   transform: none;
   cursor: not-allowed;
+}
+
+.aqua {
+  background-color: aqua;
+}
+
+.orange {
+  background-color: rgba(248, 107, 49, 0.8);
 }

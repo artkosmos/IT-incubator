@@ -1,13 +1,13 @@
-.counter {
-  width: 280px;
+.instruction {
   height: 200px;
+  width: 280px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 4px aqua solid;
+  border: 4px rgba(248, 107, 49, 0.8) solid;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 0 10px 10px rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 10px 10px rgba(213, 119, 51, 0.35);
 }
 
 .buttonsArea {
@@ -16,7 +16,7 @@
   align-items: center;
   width: 250px;
   height: 50px;
-  border: 2px aqua solid;
+  border: 2px rgba(248, 107, 49, 0.8) solid;
   border-radius: 10px;
 }
 
