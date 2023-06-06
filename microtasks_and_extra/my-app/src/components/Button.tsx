@@ -9,14 +9,14 @@ type ButtonPropsType = {
 
 export const Button: React.FC<ButtonPropsType> = ({callBack, children, disabled}) => {
 
-  /*const onClickHandler = () => {
+  const onClickHandler = () => {
     callBack()
-  }*/
+  }
 
   return (
     <button
       className={disabled ? `${style.button} ${style.disable}` : `${style.button}`}
-      onClick={callBack}
+      onClick={onClickHandler}
       disabled={disabled}
     >{children}
     </button>

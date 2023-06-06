@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import './App.css';
-import {Button} from "./components/Button";
-import style from './App.module.css'
-import {Display} from "./components/Display";
+import s from './App.module.css';
+import {Counter} from "./components/Counter";
 
 
 function App() {
@@ -21,14 +19,14 @@ function App() {
   }
 
   return (
-    <div className={style.counter}>
-      <div className={style.counterWrapper}>
-        <Display maxValue={maxValue} counter={counter}/>
-        <div className={style.buttonsArea}>
-          <Button callBack={increment} disabled={counter === maxValue}>ADD</Button>
-          <Button callBack={reset} disabled={counter === minValue}>RESET</Button>
-        </div>
-      </div>
+    <div className={s.mainContent}>
+      <Counter
+        maxValue={maxValue}
+        minValue={minValue}
+        increment={increment}
+        reset={reset}
+        currentValue={counter}
+      />
     </div>
   )
 }
