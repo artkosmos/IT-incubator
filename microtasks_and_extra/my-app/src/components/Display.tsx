@@ -1,15 +1,16 @@
 import React from "react";
 import style from "./Display.module.css";
 import {Input} from "./Input";
+import {ValuesType} from "../App";
 
 type DisplayPropsType = {
   counter?: number
-  maxValue: number
-  minValue: number
+  maxValue?: number
+  minValue?: number
   using?: string
   setMinValue?: (value: number) => void
   setMaxValue?: (value: number) => void
-
+  values?: ValuesType
 }
 
 
@@ -19,15 +20,16 @@ export const Display: React.FC<DisplayPropsType> = ({
                                                       using,
                                                       minValue,
                                                       setMaxValue,
-                                                      setMinValue
+                                                      setMinValue,
+                                                      values
                                                     }) => {
 
   if (using === 'instruction') {
     return (
       <div className={`${style.scoreboard} ${style.instruction}`}>
         <div className={style.inputWrapper}>
-          <Input value={maxValue} type={'number'} spanValue={'max value'}/>
-          <Input value={minValue} type={'number'} spanValue={'start value'}/>
+          <Input callBack={setMaxValue} value={maxValue} type={'number'} spanValue={'max value'}/>
+          <Input callBack={setMinValue} value={minValue} type={'number'} spanValue={'start value'}/>
         </div>
       </div>
     )
@@ -35,7 +37,7 @@ export const Display: React.FC<DisplayPropsType> = ({
 
   return (
     <div className={style.scoreboard}>
-      <span className={counter === maxValue ? style.red : ''}>{counter}</span>
+      <span className={values && counter === values.max ? style.red : ''}>{counter}</span>
     </div>
   )
 }

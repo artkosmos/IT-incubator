@@ -8,10 +8,16 @@ type InstructionPropsType = {
   maxValue: number
   setMinValue: (value: number) => void
   setMaxValue: (value: number) => void
-
+  setCounter: () => void
 }
 
-export const Instruction = ({maxValue, minValue, setMaxValue, setMinValue}: InstructionPropsType) => {
+export const Instruction = ({
+                              maxValue,
+                              minValue,
+                              setMaxValue,
+                              setMinValue,
+                              setCounter
+                            }: InstructionPropsType) => {
   return (
     <div>
       <div className={style.instruction}>
@@ -24,8 +30,7 @@ export const Instruction = ({maxValue, minValue, setMaxValue, setMinValue}: Inst
             setMinValue={setMinValue}
           />
           <div className={style.buttonsArea}>
-            <Button using={'instruction'} callBack={() => {
-            }}>SET</Button>
+            <Button using={'instruction'} callBack={setCounter}>SET</Button>
           </div>
         </div>
       </div>
