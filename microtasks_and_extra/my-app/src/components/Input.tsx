@@ -30,11 +30,11 @@ export const Input = ({type, spanValue, value, callBack}: InputPropsType) => {
           value={value ? value : ''}
           onChange={onChangeHandler}
           placeholder={'0'}
-          className={style.input}
+          className={error ? `${style.input} ${style.error}` : style.input}
           type={type}
         />
       </div>
-      <div className={error ? style.error + ' ' + style.active : style.error}>Only positive numbers!</div>
+      <div className={error ? `${style.errorMessage} ${style.active}` : style.errorMessage}>Only positive numbers!</div>
     </div>
   )
 }
