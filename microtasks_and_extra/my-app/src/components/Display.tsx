@@ -11,6 +11,7 @@ type DisplayPropsType = {
   setMinValue?: (value: number) => void
   setMaxValue?: (value: number) => void
   values?: ValuesType
+  setIsDisabled?: (value: boolean) => void
 }
 
 
@@ -21,15 +22,28 @@ export const Display: React.FC<DisplayPropsType> = ({
                                                       minValue,
                                                       setMaxValue,
                                                       setMinValue,
-                                                      values
+                                                      values,
+                                                      setIsDisabled
                                                     }) => {
 
   if (using === 'instruction') {
     return (
       <div className={`${style.scoreboard} ${style.instruction}`}>
         <div className={style.inputWrapper}>
-          <Input callBack={setMaxValue} value={maxValue} type={'number'} spanValue={'max value'}/>
-          <Input callBack={setMinValue} value={minValue} type={'number'} spanValue={'start value'}/>
+          <Input
+            callBack={setMaxValue}
+            value={maxValue}
+            type={'number'}
+            spanValue={'max value'}
+            setIsDisabled={setIsDisabled}
+          />
+          <Input
+            callBack={setMinValue}
+            value={minValue}
+            type={'number'}
+            spanValue={'start value'}
+            setIsDisabled={setIsDisabled}
+          />
         </div>
       </div>
     )

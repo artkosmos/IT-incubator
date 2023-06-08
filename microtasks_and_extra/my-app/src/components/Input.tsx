@@ -6,17 +6,26 @@ type InputPropsType = {
   spanValue: string
   value?: number
   callBack?: (value: number) => void
+  setIsDisabled?: (value: boolean) => void
 }
 
-export const Input = ({type, spanValue, value, callBack}: InputPropsType) => {
+export const Input = ({
+                        type,
+                        spanValue,
+                        value,
+                        callBack,
+                        setIsDisabled,
+                      }: InputPropsType) => {
 
   const [error, setError] = useState<boolean | null>(null)
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.currentTarget.value) < 0) {
       setError(true)
+      setIsDisabled?.(true)
     } else {
       setError(null)
+      setIsDisabled?.(false)
     }
 
     callBack?.(Number(event.currentTarget.value))
@@ -34,7 +43,9 @@ export const Input = ({type, spanValue, value, callBack}: InputPropsType) => {
           type={type}
         />
       </div>
-      <div className={error ? `${style.errorMessage} ${style.active}` : style.errorMessage}>Only positive numbers!</div>
+      <div className={error ? `${style.errorMessage} ${style.active}` : style.errorMessage}>
+        only positive numbers!
+      </div>
     </div>
   )
 }

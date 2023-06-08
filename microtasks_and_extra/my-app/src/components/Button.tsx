@@ -12,7 +12,7 @@ export const Button: React.FC<ButtonPropsType> = ({
                                                     callBack,
                                                     children,
                                                     disabled,
-                                                    using
+                                                    using,
                                                   }) => {
 
   const onClickHandler = () => {
