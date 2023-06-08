@@ -27,7 +27,7 @@ function App() {
     setCounter(values.min)
   }
   const addValues = () => {
-    setValues({min: minValue, max: maxValue})
+    setValues({...values, min: minValue, max: maxValue})
     setCounter(minValue)
   }
 
