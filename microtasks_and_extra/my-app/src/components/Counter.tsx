@@ -9,6 +9,8 @@ type CounterPropsType = {
   currentValue: number
   increment: () => void
   reset: () => void
+  maxInputError?: boolean
+  minInputError?: boolean
 }
 
 export const Counter = ({
@@ -16,6 +18,8 @@ export const Counter = ({
                           increment,
                           reset,
                           currentValue,
+                          maxInputError,
+                          minInputError,
                         }: CounterPropsType) => {
   return (
     <div className={style.counter}>
@@ -23,6 +27,8 @@ export const Counter = ({
         <Display
           values={values}
           counter={currentValue}
+          maxInputError={maxInputError}
+          minInputError={minInputError}
         />
         <div className={style.buttonsArea}>
           <Button using={'counter'} callBack={increment} disabled={currentValue === values.max}>ADD</Button>

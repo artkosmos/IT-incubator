@@ -60,6 +60,8 @@ function App() {
         increment={increment}
         reset={reset}
         currentValue={counter}
+        maxInputError={maxInputError}
+        minInputError={minInputError}
       />
       <Instruction
         minValue={minValue}

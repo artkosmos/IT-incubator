@@ -43,3 +43,8 @@
   display: flex;
   justify-content: space-around;
 }
+
+.counterMessage {
+  color: red;
+  font-size: 18px;
+}

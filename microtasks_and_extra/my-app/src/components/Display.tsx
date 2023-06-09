@@ -59,7 +59,9 @@ export const Display: React.FC<DisplayPropsType> = ({
 
   return (
     <div className={style.scoreboard}>
-      <span className={values && counter === values.max ? style.red : ''}>{counter}</span>
+      {maxInputError || minInputError
+        ? <span className={style.counterMessage}>Choose correct values!</span>
+        : <span className={values && counter === values.max ? style.red : ''}>{counter}</span>}
     </div>
   )
 }
