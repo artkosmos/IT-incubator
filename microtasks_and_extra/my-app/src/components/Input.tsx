@@ -6,8 +6,9 @@ type InputPropsType = {
   spanValue: string
   value?: number
   callBack?: (value: number) => void
-  setIsDisabled?: (value: boolean) => void
   inputError?: boolean
+  condition: boolean
+  setCondition?: (value: boolean) => void
 }
 
 export const Input = ({
@@ -15,8 +16,8 @@ export const Input = ({
                         spanValue,
                         value,
                         callBack,
-                        setIsDisabled,
                         inputError,
+                        condition,setCondition
                       }: InputPropsType) => {
 
   /*const [error, setError] = useState<boolean | null>(null)*/
@@ -35,6 +36,8 @@ export const Input = ({
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     callBack?.(Number(event.currentTarget.value))
+    setCondition?.(true)
+
   }
 
   const currentClassName = inputError ? `${style.input} ${style.error}` : style.input

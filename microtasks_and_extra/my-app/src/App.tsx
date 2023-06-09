@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import s from './App.module.css';
 import {Counter} from "./components/Counter";
 import {Instruction} from "./components/Instruction";
+import {saveState} from "./localStorage";
 
 export type ValuesType = {
   min: number
@@ -17,15 +18,8 @@ function App() {
   const [counter, setCounter] = useState<number>(0)
   const [maxInputError, setMaxInputError] = useState<boolean>(false)
   const [minInputError, setMinInputError] = useState<boolean>(false)
+  const [condition, setCondition] = useState<boolean>(false)
 
-
-  /*useEffect(() => {
-    if (maxValue !== values.max) {
-      setText('incorrect value')
-    } else {
-      setText('')
-    }
-  }, [minValue, maxValue])*/
 
   useEffect(() => {
     if (maxValue === minValue || minValue > maxValue) {
@@ -51,6 +45,7 @@ function App() {
   const addValues = () => {
     setValues({...values, min: minValue, max: maxValue})
     setCounter(minValue)
+    setCondition(false)
   }
 
   return (
@@ -62,6 +57,7 @@ function App() {
         currentValue={counter}
         maxInputError={maxInputError}
         minInputError={minInputError}
+        condition={condition}
       />
       <Instruction
         minValue={minValue}
@@ -73,6 +69,8 @@ function App() {
         setMaxInputError={setMaxInputError}
         minInputError={minInputError}
         setMinInputError={setMinInputError}
+        condition={condition}
+        setCondition={setCondition}
       />
     </div>
   )

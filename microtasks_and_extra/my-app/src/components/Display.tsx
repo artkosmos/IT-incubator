@@ -11,11 +11,12 @@ type DisplayPropsType = {
   setMinValue?: (value: number) => void
   setMaxValue?: (value: number) => void
   values?: ValuesType
-  setIsDisabled?: (value: boolean) => void
   maxInputError?: boolean
   setMaxInputError?: (value: boolean) => void
   minInputError?: boolean
   setMinInputError?: (value: boolean) => void
+  condition: boolean
+  setCondition?: (value: boolean) => void
 }
 
 
@@ -27,9 +28,10 @@ export const Display: React.FC<DisplayPropsType> = ({
                                                       setMaxValue,
                                                       setMinValue,
                                                       values,
-                                                      setIsDisabled,
                                                       maxInputError,
                                                       minInputError,
+                                                      condition,
+                                                      setCondition
                                                     }) => {
 
   if (using === 'instruction') {
@@ -41,16 +43,18 @@ export const Display: React.FC<DisplayPropsType> = ({
             value={maxValue}
             type={'number'}
             spanValue={'max value'}
-            setIsDisabled={setIsDisabled}
             inputError={maxInputError}
+            condition={condition}
+            setCondition={setCondition}
           />
           <Input
             callBack={setMinValue}
             value={minValue}
             type={'number'}
             spanValue={'start value'}
-            setIsDisabled={setIsDisabled}
             inputError={minInputError}
+            condition={condition}
+            setCondition={setCondition}
           />
         </div>
       </div>
@@ -60,8 +64,10 @@ export const Display: React.FC<DisplayPropsType> = ({
   return (
     <div className={style.scoreboard}>
       {maxInputError || minInputError
-        ? <span className={style.counterMessage}>Choose correct values!</span>
-        : <span className={values && counter === values.max ? style.red : ''}>{counter}</span>}
+        ? <span className={style.counterErrorMessage}>Choose correct values!</span>
+        : condition
+          ? <span className={style.counterMessage}>Choose value and press SET</span>
+          : <span className={values && counter === values.max ? style.red : ''}>{counter}</span>}
     </div>
   )
 }

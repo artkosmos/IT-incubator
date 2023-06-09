@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import style from "./Instruction.module.css";
 import {Display} from "./Display";
 import {Button} from "./Button";
@@ -13,6 +13,8 @@ type InstructionPropsType = {
   setMaxInputError?: (value: boolean) => void
   minInputError?: boolean
   setMinInputError?: (value: boolean) => void
+  condition: boolean
+  setCondition?: (value: boolean) => void
 }
 
 export const Instruction = ({
@@ -24,10 +26,10 @@ export const Instruction = ({
                               maxInputError,
                               setMaxInputError,
                               minInputError,
-                              setMinInputError
+                              setMinInputError,
+                              condition,
+                              setCondition
                             }: InstructionPropsType) => {
-
-  // const [isDisabled, setIsDisabled] = useState<boolean>(false)
 
 
   return (
@@ -41,15 +43,17 @@ export const Instruction = ({
             setMaxValue={setMaxValue}
             setMinValue={setMinValue}
             maxInputError={maxInputError}
+            setMaxInputError={setMaxInputError}
             minInputError={minInputError}
+            setMinInputError={setMinInputError}
+            condition={condition}
+            setCondition={setCondition}
           />
           <div className={style.buttonsArea}>
             <Button
               using={'instruction'}
               callBack={setCounter}
-              disabled={maxInputError || minInputError}
-              minInputError={minInputError}
-              maxInputError={maxInputError}
+              disabled={minInputError || maxInputError}
             >SET
             </Button>
           </div>

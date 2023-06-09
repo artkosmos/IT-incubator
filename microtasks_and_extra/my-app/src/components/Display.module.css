@@ -44,7 +44,11 @@
   justify-content: space-around;
 }
 
-.counterMessage {
+.counterErrorMessage {
   color: red;
   font-size: 18px;
+}
+
+.counterMessage {
+  font-size: 16px;
 }
