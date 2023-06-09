@@ -17,7 +17,8 @@ export const Input = ({
                         value,
                         callBack,
                         inputError,
-                        condition,setCondition
+                        condition,
+                        setCondition
                       }: InputPropsType) => {
 
   /*const [error, setError] = useState<boolean | null>(null)*/

@@ -6,6 +6,7 @@ type ButtonPropsType = {
   callBack: () => void
   disabled?: boolean
   using?: string
+  condition: boolean
 }
 
 export const Button: React.FC<ButtonPropsType> = ({
@@ -13,6 +14,7 @@ export const Button: React.FC<ButtonPropsType> = ({
                                                     children,
                                                     disabled,
                                                     using,
+                                                    condition
                                                   }) => {
 
   const onClickHandler = () => {

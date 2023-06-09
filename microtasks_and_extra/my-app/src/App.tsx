@@ -12,9 +12,9 @@ export type ValuesType = {
 
 function App() {
 
-  const [maxValue, setMaxValue] = useState<number>(1)
+  const [maxValue, setMaxValue] = useState<number>(5)
   const [minValue, setMinValue] = useState<number>(0)
-  const [values, setValues] = useState<ValuesType>({min: 0, max: 0})
+  const [values, setValues] = useState<ValuesType>({min: 0, max: 5})
   const [counter, setCounter] = useState<number>(0)
   const [maxInputError, setMaxInputError] = useState<boolean>(false)
   const [minInputError, setMinInputError] = useState<boolean>(false)
@@ -42,6 +42,7 @@ function App() {
   const reset = () => {
     setCounter(values.min)
   }
+
   const addValues = () => {
     setValues({...values, min: minValue, max: maxValue})
     setCounter(minValue)

@@ -34,8 +34,20 @@ export const Counter = ({
           condition={condition}
         />
         <div className={style.buttonsArea}>
-          <Button using={'counter'} callBack={increment} disabled={currentValue === values.max}>ADD</Button>
-          <Button using={'counter'} callBack={reset} disabled={currentValue === values.min}>RESET</Button>
+          <Button
+            using={'counter'}
+            callBack={increment}
+            disabled={currentValue === values.max || condition}
+            condition={condition}
+          >ADD
+          </Button>
+          <Button
+            using={'counter'}
+            callBack={reset}
+            disabled={currentValue === values.min || condition}
+            condition={condition}
+          >RESET
+          </Button>
         </div>
       </div>
     </div>
