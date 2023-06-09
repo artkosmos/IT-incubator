@@ -5,46 +5,48 @@ import {Button} from "./Button";
 import {ValuesType} from "../App";
 
 type CounterPropsType = {
-  values: ValuesType
   currentValue: number
   increment: () => void
   reset: () => void
   maxInputError?: boolean
   minInputError?: boolean
   condition: boolean
+  minValue: number
+  maxValue: number
 }
 
 export const Counter = ({
-                          values,
                           increment,
                           reset,
                           currentValue,
                           maxInputError,
                           minInputError,
-                          condition
+                          condition,
+                          minValue,
+                          maxValue
                         }: CounterPropsType) => {
   return (
     <div className={style.counter}>
       <div className={style.contentWrapper}>
         <Display
-          values={values}
           counter={currentValue}
           maxInputError={maxInputError}
           minInputError={minInputError}
           condition={condition}
+          maxValue={maxValue}
         />
         <div className={style.buttonsArea}>
           <Button
             using={'counter'}
             callBack={increment}
-            disabled={currentValue === values.max || condition}
+            disabled={currentValue === maxValue || condition}
             condition={condition}
           >ADD
           </Button>
           <Button
             using={'counter'}
             callBack={reset}
-            disabled={currentValue === values.min || condition}
+            disabled={currentValue === minValue || condition}
             condition={condition}
           >RESET
           </Button>

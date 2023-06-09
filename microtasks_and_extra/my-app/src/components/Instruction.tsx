@@ -8,13 +8,13 @@ type InstructionPropsType = {
   maxValue: number
   setMinValue: (value: number) => void
   setMaxValue: (value: number) => void
-  setCounter: () => void
   maxInputError?: boolean
   setMaxInputError?: (value: boolean) => void
   minInputError?: boolean
   setMinInputError?: (value: boolean) => void
   condition: boolean
   setCondition?: (value: boolean) => void
+  instruction: () => void
 }
 
 export const Instruction = ({
@@ -22,13 +22,13 @@ export const Instruction = ({
                               minValue,
                               setMaxValue,
                               setMinValue,
-                              setCounter,
                               maxInputError,
                               setMaxInputError,
                               minInputError,
                               setMinInputError,
                               condition,
-                              setCondition
+                              setCondition,
+                              instruction
                             }: InstructionPropsType) => {
 
 
@@ -52,7 +52,7 @@ export const Instruction = ({
           <div className={style.buttonsArea}>
             <Button
               using={'instruction'}
-              callBack={setCounter}
+              callBack={instruction}
               disabled={minInputError || maxInputError || !condition}
               condition={!condition}
             >SET

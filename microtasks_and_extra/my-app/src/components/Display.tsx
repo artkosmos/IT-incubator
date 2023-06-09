@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./Display.module.css";
 import {Input} from "./Input";
-import {ValuesType} from "../App";
 
 type DisplayPropsType = {
   counter?: number
@@ -10,7 +9,6 @@ type DisplayPropsType = {
   using?: string
   setMinValue?: (value: number) => void
   setMaxValue?: (value: number) => void
-  values?: ValuesType
   maxInputError?: boolean
   setMaxInputError?: (value: boolean) => void
   minInputError?: boolean
@@ -27,7 +25,6 @@ export const Display: React.FC<DisplayPropsType> = ({
                                                       minValue,
                                                       setMaxValue,
                                                       setMinValue,
-                                                      values,
                                                       maxInputError,
                                                       minInputError,
                                                       condition,
@@ -67,7 +64,7 @@ export const Display: React.FC<DisplayPropsType> = ({
         ? <span className={style.counterErrorMessage}>Choose correct values!</span>
         : condition
           ? <span className={style.counterMessage}>Choose value and press SET</span>
-          : <span className={values && counter === values.max ? style.red : ''}>{counter}</span>}
+          : <span className={maxValue && counter === maxValue ? style.red : ''}>{counter}</span>}
     </div>
   )
 }

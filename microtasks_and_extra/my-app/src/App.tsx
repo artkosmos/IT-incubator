@@ -14,7 +14,6 @@ function App() {
 
   const [maxValue, setMaxValue] = useState<number>(5)
   const [minValue, setMinValue] = useState<number>(0)
-  const [values, setValues] = useState<ValuesType>({min: 0, max: 5})
   const [counter, setCounter] = useState<number>(0)
   const [maxInputError, setMaxInputError] = useState<boolean>(false)
   const [minInputError, setMinInputError] = useState<boolean>(false)
@@ -40,11 +39,10 @@ function App() {
   }
 
   const reset = () => {
-    setCounter(values.min)
+    setCounter(minValue)
   }
 
-  const addValues = () => {
-    setValues({...values, min: minValue, max: maxValue})
+  const installInstruction = () => {
     setCounter(minValue)
     setCondition(false)
   }
@@ -52,26 +50,27 @@ function App() {
   return (
     <div className={s.mainContentWrapper}>
       <Counter
-        values={values}
         increment={increment}
         reset={reset}
         currentValue={counter}
         maxInputError={maxInputError}
         minInputError={minInputError}
         condition={condition}
+        minValue={minValue}
+        maxValue={maxValue}
       />
       <Instruction
         minValue={minValue}
         setMinValue={setMinValue}
         maxValue={maxValue}
         setMaxValue={setMaxValue}
-        setCounter={addValues}
         maxInputError={maxInputError}
         setMaxInputError={setMaxInputError}
         minInputError={minInputError}
         setMinInputError={setMinInputError}
         condition={condition}
         setCondition={setCondition}
+        instruction={installInstruction}
       />
     </div>
   )
