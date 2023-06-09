@@ -7,6 +7,7 @@ type InputPropsType = {
   value?: number
   callBack?: (value: number) => void
   setIsDisabled?: (value: boolean) => void
+  inputError?: boolean
 }
 
 export const Input = ({
@@ -15,11 +16,12 @@ export const Input = ({
                         value,
                         callBack,
                         setIsDisabled,
+                        inputError,
                       }: InputPropsType) => {
 
-  const [error, setError] = useState<boolean | null>(null)
+  /*const [error, setError] = useState<boolean | null>(null)*/
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+  /*const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     if (Number(event.currentTarget.value) < 0) {
       setError(true)
       setIsDisabled?.(true)
@@ -29,7 +31,13 @@ export const Input = ({
     }
 
     callBack?.(Number(event.currentTarget.value))
+  }*/
+
+  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    callBack?.(Number(event.currentTarget.value))
   }
+
+  const currentClassName = inputError ? `${style.input} ${style.error}` : style.input
 
   return (
     <div className={style.inputWrapper}>
@@ -39,12 +47,12 @@ export const Input = ({
           value={value ? value : ''}
           onChange={onChangeHandler}
           placeholder={'0'}
-          className={error ? `${style.input} ${style.error}` : style.input}
+          className={currentClassName}
           type={type}
         />
       </div>
-      <div className={error ? `${style.errorMessage} ${style.active}` : style.errorMessage}>
-        only positive numbers!
+      <div className={inputError ? `${style.errorMessage} ${style.active}` : style.errorMessage}>
+        invalid value!
       </div>
     </div>
   )

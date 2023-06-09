@@ -12,6 +12,10 @@ type DisplayPropsType = {
   setMaxValue?: (value: number) => void
   values?: ValuesType
   setIsDisabled?: (value: boolean) => void
+  maxInputError?: boolean
+  setMaxInputError?: (value: boolean) => void
+  minInputError?: boolean
+  setMinInputError?: (value: boolean) => void
 }
 
 
@@ -23,7 +27,9 @@ export const Display: React.FC<DisplayPropsType> = ({
                                                       setMaxValue,
                                                       setMinValue,
                                                       values,
-                                                      setIsDisabled
+                                                      setIsDisabled,
+                                                      maxInputError,
+                                                      minInputError,
                                                     }) => {
 
   if (using === 'instruction') {
@@ -36,6 +42,7 @@ export const Display: React.FC<DisplayPropsType> = ({
             type={'number'}
             spanValue={'max value'}
             setIsDisabled={setIsDisabled}
+            inputError={maxInputError}
           />
           <Input
             callBack={setMinValue}
@@ -43,6 +50,7 @@ export const Display: React.FC<DisplayPropsType> = ({
             type={'number'}
             spanValue={'start value'}
             setIsDisabled={setIsDisabled}
+            inputError={minInputError}
           />
         </div>
       </div>
