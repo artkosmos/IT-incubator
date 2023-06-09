@@ -1,6 +1,5 @@
 import React from 'react';
 import style from "./Instruction.module.css";
-import {Display} from "./Display";
 import {Button} from "./Button";
 import {DisplayInstruction} from "./DisplayInstruction";
 

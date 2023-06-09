@@ -1,15 +1,14 @@
 import React from 'react';
 import style from "./Counter.module.css";
-import {Display} from "./Display";
 import {Button} from "./Button";
-import {ValuesType} from "../App";
+import {DisplayCounter} from "./Display";
 
 type CounterPropsType = {
   currentValue: number
   increment: () => void
   reset: () => void
-  maxInputError?: boolean
-  minInputError?: boolean
+  maxInputError: boolean
+  minInputError: boolean
   condition: boolean
   minValue: number
   maxValue: number
@@ -28,7 +27,7 @@ export const Counter = ({
   return (
     <div className={style.counter}>
       <div className={style.contentWrapper}>
-        <Display
+        <DisplayCounter
           counter={currentValue}
           maxInputError={maxInputError}
           minInputError={minInputError}

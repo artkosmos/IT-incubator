@@ -1,62 +1,23 @@
 import React from "react";
 import style from "./Display.module.css";
-import {Input} from "./Input";
 
-type DisplayPropsType = {
-  counter?: number
-  maxValue?: number
-  minValue?: number
-  using?: string
-  setMinValue?: (value: number) => void
-  setMaxValue?: (value: number) => void
-  maxInputError?: boolean
-  setMaxInputError?: (value: boolean) => void
-  minInputError?: boolean
-  setMinInputError?: (value: boolean) => void
+type DisplayCounterPropsType = {
+  counter: number
+  maxValue: number
+  maxInputError: boolean
+  minInputError: boolean
   condition: boolean
-  setCondition?: (value: boolean) => void
 }
 
 
-export const Display: React.FC<DisplayPropsType> = ({
+export const DisplayCounter: React.FC<DisplayCounterPropsType> = ({
                                                       counter,
                                                       maxValue,
-                                                      using,
-                                                      minValue,
-                                                      setMaxValue,
-                                                      setMinValue,
                                                       maxInputError,
                                                       minInputError,
                                                       condition,
-                                                      setCondition
                                                     }) => {
 
-  /*if (using === 'instruction') {
-    return (
-      <div className={`${style.scoreboard} ${style.instruction}`}>
-        <div className={style.inputWrapper}>
-          <Input
-            callBack={setMaxValue}
-            value={maxValue}
-            type={'number'}
-            spanValue={'max value'}
-            inputError={maxInputError}
-            condition={condition}
-            setCondition={setCondition}
-          />
-          <Input
-            callBack={setMinValue}
-            value={minValue}
-            type={'number'}
-            spanValue={'start value'}
-            inputError={minInputError}
-            condition={condition}
-            setCondition={setCondition}
-          />
-        </div>
-      </div>
-    )
-  }*/
 
   return (
     <div className={style.scoreboard}>
