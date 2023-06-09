@@ -46,7 +46,6 @@ export const Instruction = ({
               using={'instruction'}
               callBack={instruction}
               disabled={minInputError || maxInputError || !condition}
-              condition={!condition}
             >SET
             </Button>
           </div>

@@ -39,14 +39,12 @@ export const Counter = ({
             using={'counter'}
             callBack={increment}
             disabled={currentValue === maxValue || condition}
-            condition={condition}
           >ADD
           </Button>
           <Button
             using={'counter'}
             callBack={reset}
             disabled={currentValue === minValue || condition}
-            condition={condition}
           >RESET
           </Button>
         </div>
