@@ -65,9 +65,7 @@ function App() {
         maxValue={maxValue}
         setMaxValue={setMaxValue}
         maxInputError={maxInputError}
-        setMaxInputError={setMaxInputError}
         minInputError={minInputError}
-        setMinInputError={setMinInputError}
         condition={condition}
         setCondition={setCondition}
         instruction={installInstruction}

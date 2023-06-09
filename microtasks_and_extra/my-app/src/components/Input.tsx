@@ -4,10 +4,9 @@ import style from './Input.module.css'
 type InputPropsType = {
   type: string
   spanValue: string
-  value?: number
+  value: number
   callBack?: (value: number) => void
-  inputError?: boolean
-  condition: boolean
+  inputError: boolean
   setCondition?: (value: boolean) => void
 }
 
@@ -17,7 +16,6 @@ export const Input = ({
                         value,
                         callBack,
                         inputError,
-                        condition,
                         setCondition
                       }: InputPropsType) => {
 
@@ -38,7 +36,6 @@ export const Input = ({
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     callBack?.(Number(event.currentTarget.value))
     setCondition?.(true)
-
   }
 
   const currentClassName = inputError ? `${style.input} ${style.error}` : style.input
@@ -48,9 +45,8 @@ export const Input = ({
       <div className={style.inputLine}>
         <span>{spanValue}</span>
         <input
-          value={value ? value : ''}
+          value={value}
           onChange={onChangeHandler}
-          placeholder={'0'}
           className={currentClassName}
           type={type}
         />

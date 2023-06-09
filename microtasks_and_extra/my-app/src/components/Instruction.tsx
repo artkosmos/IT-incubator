@@ -2,18 +2,17 @@ import React from 'react';
 import style from "./Instruction.module.css";
 import {Display} from "./Display";
 import {Button} from "./Button";
+import {DisplayInstruction} from "./DisplayInstruction";
 
 type InstructionPropsType = {
   minValue: number
   maxValue: number
   setMinValue: (value: number) => void
   setMaxValue: (value: number) => void
-  maxInputError?: boolean
-  setMaxInputError?: (value: boolean) => void
-  minInputError?: boolean
-  setMinInputError?: (value: boolean) => void
+  maxInputError: boolean
+  minInputError: boolean
   condition: boolean
-  setCondition?: (value: boolean) => void
+  setCondition: (value: boolean) => void
   instruction: () => void
 }
 
@@ -23,9 +22,7 @@ export const Instruction = ({
                               setMaxValue,
                               setMinValue,
                               maxInputError,
-                              setMaxInputError,
                               minInputError,
-                              setMinInputError,
                               condition,
                               setCondition,
                               instruction
@@ -36,17 +33,13 @@ export const Instruction = ({
     <div>
       <div className={style.instruction}>
         <div className={style.contentWrapper}>
-          <Display
-            using={'instruction'}
+          <DisplayInstruction
             maxValue={maxValue}
             minValue={minValue}
             setMaxValue={setMaxValue}
             setMinValue={setMinValue}
             maxInputError={maxInputError}
-            setMaxInputError={setMaxInputError}
             minInputError={minInputError}
-            setMinInputError={setMinInputError}
-            condition={condition}
             setCondition={setCondition}
           />
           <div className={style.buttonsArea}>

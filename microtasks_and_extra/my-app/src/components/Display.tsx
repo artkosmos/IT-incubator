@@ -31,7 +31,7 @@ export const Display: React.FC<DisplayPropsType> = ({
                                                       setCondition
                                                     }) => {
 
-  if (using === 'instruction') {
+  /*if (using === 'instruction') {
     return (
       <div className={`${style.scoreboard} ${style.instruction}`}>
         <div className={style.inputWrapper}>
@@ -56,7 +56,7 @@ export const Display: React.FC<DisplayPropsType> = ({
         </div>
       </div>
     )
-  }
+  }*/
 
   return (
     <div className={style.scoreboard}>
