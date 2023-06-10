@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
+    "sass": "^1.63.3",
     "styled-components": "^5.3.11",
     "typescript": "^4.4.2",
     "uuid": "^9.0.0",
@@ -26,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write src",
+    "lint": "eslint --fix {src}/**/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint --fix src/{,*/}*.scss"
   },
   "eslintConfig": {
     "extends": [
@@ -45,5 +48,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@it-incubator/eslint-config": "^0.1.2",
+    "@it-incubator/prettier-config": "^0.1.1",
+    "@it-incubator/stylelint-config": "^0.1.4",
+    "stylelint": "^15.7.0"
   }
 }
