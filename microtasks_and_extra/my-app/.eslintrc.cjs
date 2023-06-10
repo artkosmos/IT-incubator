@@ -2,6 +2,7 @@ module.exports = {
   extends: '@it-incubator/eslint-config',
   rules: {
     'no-console': ['warn', { allow: ['warn', 'error'] }],
-    'import/order': 'off'
+    'import/order': 'off',
+    'no-nested-ternary': 'off'
   },
 }

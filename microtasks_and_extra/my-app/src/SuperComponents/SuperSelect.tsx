@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, { ChangeEvent } from 'react'
 
 type OptionType = {
   value: string
@@ -6,23 +6,26 @@ type OptionType = {
 }
 
 type SuperSelectPropsType = {
-  callBack: (value: string) => void
   options: OptionType[]
+  callBack: (value: string) => void
 }
 
-export const SuperSelect: React.FC<SuperSelectPropsType> = ({callBack, options,...restProps}) => {
-
+export const SuperSelect: React.FC<SuperSelectPropsType> = ({
+  options,
+  callBack,
+  ...restProps
+}) => {
   const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
     callBack(e.currentTarget.value)
   }
 
   return (
     <select onChange={onChangeHandler}>
-      {options.map((item, index) => {
-        return (
-          <option key={index} value={item.value}>{item.label}</option>
-        )
-      })}
+      {options.map((el, index) => (
+        <option key={index} value={el.value}>
+          {el.label}
+        </option>
+      ))}
     </select>
-  );
-};
+  )
+}
