@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { OsType, WishesDataType, WishType } from './App'
-import { SuperInput } from './superComponents/SuperInput'
+import { SuperForm } from './superComponents/SuperForm'
 import SuperCheckbox from './superComponents/SuperCheckbox'
 import { SuperSelect } from './superComponents/SuperSelect'
 
@@ -62,7 +62,7 @@ export const WishList = (props: WishListPropsType) => {
       <h1>{props.category}</h1>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
-          <SuperInput callBack={addWishHandler} setError={setError} />
+          <SuperForm callBack={addWishHandler} setError={setError} />
           {/*<input placeholder={"Enter an item"}*/}
           {/*	   value={props.newWishTitle}*/}
           {/*	   onChange={onNewItemChangeHandler}*/}
