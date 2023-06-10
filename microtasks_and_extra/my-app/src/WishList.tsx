@@ -11,11 +11,11 @@ export type WishListPropsType = {
   wishes: WishType[]
   osFilter: OsType
   setOsFilter: (text: OsType) => void
-  addNewWish: (wishListId: string, oS: OsTypeForSelect, newValue: string) => void
-  removeWish: (id: string) => void
+  addNewWish: (wishListId: string, oS: OsTypeForSelect, newValue: string, filterKey: string) => void
+  removeWish: (wishListId: string, id: string) => void
   activityFilter: StatusTypeForSelect
   setActivityFilter: (filterValue: StatusTypeForSelect) => void
-  changeWishStatus: (wishId: string, statusValue: boolean) => void
+  changeWishStatus: (wishListId: string, wishId: string, statusValue: boolean) => void
   wishListId: string
 }
 
@@ -30,7 +30,7 @@ export const WishList = (props: WishListPropsType) => {
   const addWishHandler = (newValue: string) => {
     if (oS !== 'Select OS') {
       if (newValue.trim() !== '') {
-        props.addNewWish(props.wishListId, oS, newValue)
+        props.addNewWish(props.wishListId, oS, newValue, 'something')
 
         setOS('Select OS')
       } else setError('Select item')
@@ -38,7 +38,7 @@ export const WishList = (props: WishListPropsType) => {
   }
 
   const removeWishHandler = (id: string) => {
-    props.removeWish(id)
+    props.removeWish(props.wishListId, id)
   }
 
   const onChangeOSHandler = (value: string) => {
@@ -53,7 +53,7 @@ export const WishList = (props: WishListPropsType) => {
   }
 
   const changeStatusHandler = (wishId: string, value: boolean) => {
-    props.changeWishStatus(wishId, value)
+    props.changeWishStatus(props.wishListId, wishId, value)
   }
 
   return (

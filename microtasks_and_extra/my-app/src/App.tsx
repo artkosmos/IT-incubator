@@ -59,21 +59,21 @@ function App() {
   // 	{id: v1(), title: 'Iphone 14', OS: "iOS", checked: false},
   // ])
 
-  // const addNewWish = (
-  //   wishListId: string,
-  //   oS: OsTypeForSelect,
-  //   newValue: string,
-  //   filterKey: string
-  // ) => {
-  //   let newItem: WishType
-  //
-  //   if (wishLists[wishListId].filterBy === 'genre') {
-  //     newItem = { title: newValue, OS: 'iOS', checked: true }
-  //   } else {
-  //     newItem = { title: newValue, genre: 'Detective', checked: true }
-  //   }
-  //   setWishes({ ...wishes, [wishListId]: { ...wishes[wishListId], newItem } })
-  // }
+  const addNewWish = (
+    wishListId: string,
+    oS: OsTypeForSelect,
+    newValue: string,
+    filterKey: string
+  ) => {
+    // let newItem: WishType
+    //
+    // if (wishLists[wishListId].filterBy === 'genre') {
+    //   newItem = { title: newValue, OS: 'iOS', checked: true }
+    // } else {
+    //   newItem = { title: newValue, genre: 'Detective', checked: true }
+    // }
+    // setWishes({ ...wishes, [wishListId]: { ...wishes[wishListId], newItem } })
+  }
   const removeWish = (wishListId: string, id: string) => {
     setWishes({ ...wishes, [wishListId]: wishes[wishListId].filter(el => el.id !== id) })
   }
@@ -81,20 +81,25 @@ function App() {
   //{id: v1(), title: 'Samsung Galaxy S23', OS: "Android", checked: true, isTrue: statusValue }
   //1. Видишь объект-делай копию. 2. Видишь массив-делай копию. 3. Видишь ключ-создавай новый.
 
-  const changeWishStatus = (wishId: string, statusValue: boolean) => {
-    setWishes(wishes.map(el => (el.id === wishId ? { ...el, checked: statusValue } : el)))
+  const changeWishStatus = (wishListId: string, wishId: string, statusValue: boolean) => {
+    setWishes({
+      ...wishes,
+      [wishListId]: wishes[wishListId].map(el =>
+        el.id === wishId ? { ...el, checked: statusValue } : el
+      ),
+    })
   }
 
-  const wishesWhatWeWantToSee =
-    osFilter === 'All' ? wishes : wishes.filter(el => el.OS === osFilter) // select OS
-
-  const wishesWhatWeWantToSeeGeneral =
-    activityFilter === 'All'
-      ? wishesWhatWeWantToSee
-      : activityFilter === 'Active'
-      ? wishesWhatWeWantToSee.filter(el => !el.checked)
-      : wishesWhatWeWantToSee.filter(el => el.checked)
-  // select Activity
+  // const wishesWhatWeWantToSee =
+  //   osFilter === 'All' ? wishes : wishes.filter(el => el.OS === osFilter) // select OS
+  //
+  // const wishesWhatWeWantToSeeGeneral =
+  //   activityFilter === 'All'
+  //     ? wishesWhatWeWantToSee
+  //     : activityFilter === 'Active'
+  //     ? wishesWhatWeWantToSee.filter(el => !el.checked)
+  //     : wishesWhatWeWantToSee.filter(el => el.checked)
+  // // select Activity
 
   return (
     <div className="App">
