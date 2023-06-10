@@ -40,65 +40,174 @@
 
 // // MEDIUM LEVEL
 
+// import React, { useState } from 'react'
+// import './App.css'
+// import { TaskType, WishList } from './WishList'
+// import { v1 } from 'uuid'
+//
+// export type FilterValuesType = 'all' | 'active' | 'completed'
+//
+// type TodolistsType = {
+//   id: string
+//   title: string
+//   filter: FilterValuesType
+// }
+// type TasksType = {
+//   [key: string]: Array<TaskType>
+// }
+//
+// function App() {
+//   let todolistID1 = v1()
+//   let todolistID2 = v1()
+//
+//   let [todolists, setTodolists] = useState<Array<TodolistsType>>([
+//     { id: todolistID1, title: 'What to learn', filter: 'all' },
+//     { id: todolistID2, title: 'What to buy', filter: 'all' },
+//   ])
+//
+//   let [tasks, setTasks] = useState<TasksType>({
+//     [todolistID1]: [
+//       { id: v1(), title: 'HTML&CSS', isDone: true },
+//       { id: v1(), title: 'JS', isDone: true },
+//       { id: v1(), title: 'ReactJS', isDone: false },
+//       { id: v1(), title: 'Rest API', isDone: false },
+//       { id: v1(), title: 'Graph SQL', isDone: false },
+//     ],
+//     [todolistID2]: [
+//       { id: v1(), title: 'Milk', isDone: true },
+//       { id: v1(), title: 'Fruits', isDone: true },
+//       { id: v1(), title: 'Nuts', isDone: true },
+//       { id: v1(), title: 'Bread', isDone: false },
+//       { id: v1(), title: 'Sugar', isDone: false },
+//     ],
+//   })
+//
+//   function removeTask(todolistID: string, taskID: string) {
+//     setTasks({ ...tasks, [todolistID]: tasks[todolistID].filter(item => item.id !== taskID) })
+//   }
+//
+//   function changeStatus(todolistID: string, taskId: string, isDone: boolean) {
+//     setTasks({
+//       ...tasks,
+//       [todolistID]: tasks[todolistID].map(item =>
+//         item.id === taskId ? { ...item, isDone } : item
+//       ),
+//     })
+//   }
+//
+//   return (
+//     <div className="App">
+//       {todolists.map(el => {
+//         let tasksForTodolist = tasks[el.id]
+//
+//         return (
+//           <WishList
+//             key={el.id}
+//             todolistID={el.id}
+//             title={el.title}
+//             tasks={tasksForTodolist}
+//             removeTask={removeTask}
+//             changeTaskStatus={changeStatus}
+//           />
+//         )
+//       })}
+//     </div>
+//   )
+// }
+//
+// export default App
+
+// // HARD LEVEL
+
 import React, { useState } from 'react'
 import './App.css'
 import { TaskType, WishList } from './WishList'
 import { v1 } from 'uuid'
 
 export type FilterValuesType = 'all' | 'active' | 'completed'
-
-type TodolistsType = {
-  id: string
-  title: string
+type TodolistsType = { id: string; title: string }
+type TasksStateType = {
+  [key: string]: InCaseType
+}
+type EntryPointType = {
+  data: Array<TaskType>
   filter: FilterValuesType
 }
-type TasksType = {
-  [key: string]: Array<TaskType>
+type InCaseType = {
+  entryPoint: EntryPointType
+  completed: boolean
 }
 
 function App() {
-  let todolistID1 = v1()
-  let todolistID2 = v1()
+  let todolistId1 = v1()
+  let todolistId2 = v1()
 
   let [todolists, setTodolists] = useState<Array<TodolistsType>>([
-    { id: todolistID1, title: 'What to learn', filter: 'all' },
-    { id: todolistID2, title: 'What to buy', filter: 'all' },
+    { id: todolistId1, title: 'What to learn' },
+    { id: todolistId2, title: 'What to buy' },
   ])
 
-  let [tasks, setTasks] = useState<TasksType>({
-    [todolistID1]: [
-      { id: v1(), title: 'HTML&CSS', isDone: true },
-      { id: v1(), title: 'JS', isDone: true },
-      { id: v1(), title: 'ReactJS', isDone: false },
-      { id: v1(), title: 'Rest API', isDone: false },
-      { id: v1(), title: 'Graph SQL', isDone: false },
-    ],
-    [todolistID2]: [
-      { id: v1(), title: 'Milk', isDone: true },
-      { id: v1(), title: 'Fruits', isDone: true },
-      { id: v1(), title: 'Nuts', isDone: true },
-      { id: v1(), title: 'Bread', isDone: false },
-      { id: v1(), title: 'Sugar', isDone: false },
-    ],
+  let [tasks, setTasks] = useState<TasksStateType>({
+    [todolistId1]: {
+      entryPoint: {
+        data: [
+          { id: v1(), title: 'HTML&CSS', isDone: true },
+          { id: v1(), title: 'JS', isDone: true },
+          { id: v1(), title: 'ReactJS', isDone: false },
+          { id: v1(), title: 'Rest API', isDone: false },
+          { id: v1(), title: 'Graph SQL', isDone: false },
+        ],
+        filter: 'all',
+      },
+      completed: true,
+    },
+    [todolistId2]: {
+      entryPoint: {
+        data: [
+          { id: v1(), title: 'Milk', isDone: true },
+          { id: v1(), title: 'Fruits', isDone: true },
+          { id: v1(), title: 'Nuts', isDone: true },
+          { id: v1(), title: 'Bread', isDone: false },
+          { id: v1(), title: 'Sugar', isDone: false },
+        ],
+        filter: 'all',
+      },
+      completed: true,
+    },
   })
 
-  function removeTask(todolistID: string, taskID: string) {
-    setTasks({ ...tasks, [todolistID]: tasks[todolistID].filter(item => item.id !== taskID) })
-  }
-
-  function changeStatus(todolistID: string, taskId: string, isDone: boolean) {
+  function removeTask(todolistId: string, taskId: string) {
     setTasks({
       ...tasks,
-      [todolistID]: tasks[todolistID].map(item =>
-        item.id === taskId ? { ...item, isDone } : item
-      ),
+      [todolistId]: {
+        ...tasks[todolistId],
+        entryPoint: {
+          ...tasks[todolistId].entryPoint,
+          data: tasks[todolistId].entryPoint.data.filter(item => item.id !== taskId),
+        },
+      },
+    })
+  }
+
+  function changeTaskStatus(todolistId: string, taskId: string, newIsDone: boolean) {
+    setTasks({
+      ...tasks,
+      [todolistId]: {
+        ...tasks[todolistId],
+        entryPoint: {
+          ...tasks[todolistId].entryPoint,
+          data: tasks[todolistId].entryPoint.data.map(item =>
+            item.id === taskId ? { ...item, isDone: newIsDone } : item
+          ),
+        },
+      },
     })
   }
 
   return (
     <div className="App">
       {todolists.map(el => {
-        let tasksForTodolist = tasks[el.id]
+        let tasksForTodolist = tasks[el.id].entryPoint.data
 
         return (
           <WishList
@@ -107,7 +216,7 @@ function App() {
             title={el.title}
             tasks={tasksForTodolist}
             removeTask={removeTask}
-            changeTaskStatus={changeStatus}
+            changeTaskStatus={changeTaskStatus}
           />
         )
       })}
@@ -116,95 +225,6 @@ function App() {
 }
 
 export default App
-
-// // HARD LEVEL
-
-// import React, {useState} from 'react';
-// import './App.css';
-// import {TaskType, WishList} from './WishList';
-// import {v1} from 'uuid';
-//
-// export type FilterValuesType = "all" | "active" | "completed";
-// type TodolistsType = { id: string, title: string }
-// type TasksStateType = {
-//   [key: string]: InCaseType;
-// }
-// type EntryPointType = {
-//   data: Array<TaskType>;
-//   filter: FilterValuesType;
-// }
-// type InCaseType = {
-//   entryPoint: EntryPointType;
-//   completed: boolean
-// }
-//
-// function App() {
-//
-//   let todolistId1 = v1();
-//   let todolistId2 = v1();
-//
-//   let [todolists, setTodolists] = useState<Array<TodolistsType>>([
-//     {id: todolistId1, title: "What to learn"},
-//     {id: todolistId2, title: "What to buy"}
-//   ])
-//
-//   let [tasks, setTasks] = useState<TasksStateType>({
-//     [todolistId1]: {
-//       entryPoint: {
-//         data: [
-//           {id: v1(), title: 'HTML&CSS', isDone: true},
-//           {id: v1(), title: 'JS', isDone: true},
-//           {id: v1(), title: 'ReactJS', isDone: false},
-//           {id: v1(), title: 'Rest API', isDone: false},
-//           {id: v1(), title: 'Graph SQL', isDone: false},
-//         ],
-//         filter: "all",
-//       },
-//       completed: true
-//     },
-//     [todolistId2]: {
-//       entryPoint: {
-//         data: [
-//           {id: v1(), title: 'Milk', isDone: true},
-//           {id: v1(), title: 'Fruits', isDone: true},
-//           {id: v1(), title: 'Nuts', isDone: true},
-//           {id: v1(), title: 'Bread', isDone: false},
-//           {id: v1(), title: 'Sugar', isDone: false},
-//         ],
-//         filter: "all",
-//       },
-//       completed: true,
-//     },
-//   });
-//
-//   function removeTask(todolistId: string, taskId: string) {
-//     //setTasks()
-//   }
-//
-//   function changeTaskStatus(todolistId: string, taskId: string, newIsDone: boolean) {
-//     //setTasks()
-//   }
-//
-//   return (
-//       <div className="App">
-//         {todolists.map((el) => {
-//           let tasksForTodolist = tasks[el.id].entryPoint.data;
-//           return (
-//               <WishList
-//                   key={el.id}
-//                   todolistID={el.id}
-//                   title={el.title}
-//                   tasks={tasksForTodolist}
-//                   removeTask={removeTask}
-//                   changeTaskStatus={changeTaskStatus}
-//               />
-//           )
-//         })}
-//       </div>
-//   );
-// }
-//
-// export default App;
 
 // Илья 02.06.2023
 // Начальная src
