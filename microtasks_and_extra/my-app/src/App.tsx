@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './App.css'
 import { OsTypeForSelect, StatusTypeForSelect, WishList } from './WishList'
 import { v1 } from 'uuid'
+import { SuperInput } from './superComponents/SuperInput'
+import { SuperButton } from './superComponents/SuperButton'
 
 export type OsType = 'All' | 'iOS' | 'Android' | OsTypeForSelect
 
@@ -95,8 +97,45 @@ function App() {
   // // select Activity
   //
 
+  const [wishListTitle, setWishListTitle] = useState<string>('')
+  const [filterName, setFilterName] = useState<string>('')
+  const [firstFilter, setFirstFilter] = useState<string>('')
+  const [secondFilter, setSecondFilter] = useState<string>('')
+  const [filterState, setFilterState] = useState<object>({})
+
+  const addNewWishList = () => {
+    const newWishListId = v1()
+    const newWishList = { id: newWishListId, category: wishListTitle, filterBy: filterName }
+
+    setWishlists([...wishLists, newWishList])
+    setWishes({ ...wishes, [newWishListId]: [] })
+    setFilterState({
+      id: newWishListId,
+      value: [
+        { value: 'Category', label: 'Category' },
+        { value: firstFilter, label: firstFilter },
+        { value: secondFilter, label: secondFilter },
+      ],
+    })
+  }
+
   return (
     <div className="App">
+      <div>
+        <p>Wish List Name</p>
+        <SuperInput
+          callBack={setWishListTitle}
+          value={wishListTitle}
+          onKeyDownCallBack={() => {}}
+        />
+        <p>Category</p>
+        <SuperInput callBack={setFilterName} value={filterName} onKeyDownCallBack={() => {}} />
+        <p>First Filter</p>
+        <SuperInput callBack={setFirstFilter} value={firstFilter} onKeyDownCallBack={() => {}} />
+        <p>Second Filter</p>
+        <SuperInput callBack={setSecondFilter} value={secondFilter} onKeyDownCallBack={() => {}} />
+        <SuperButton callBack={addNewWishList} name={'Apply'} />
+      </div>
       {wishLists.map(wl => {
         return (
           <WishList
