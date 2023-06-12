@@ -39,7 +39,6 @@
 // isIncludes("Incubator", "Incubatorrr")=> true //*false
 
 // 1 task
-
 function repeatString(string, repeat, divider) {
   return new Array(repeat).fill(string).join(divider)
 }
@@ -47,15 +46,19 @@ function repeatString(string, repeat, divider) {
 console.log(repeatString('hello', 3, ', '))
 
 // 2 task
-
-function checkStart (string, value) {
+function checkStart(string, value) {
   return string.toLowerCase().startsWith(value.toLowerCase())
 }
 
 console.log(checkStart("Incubator", "inc"))
 console.log(checkStart("Incubator", "ync"))
 
-  
+// 3 task
+function truncateString(string, quantitySymbols) {
+  return `${string.slice(0, quantitySymbols)}...`
+}
+
+console.log(truncateString("Всем студентам инкубатора желаю удачи!", 10))
 
 
 
