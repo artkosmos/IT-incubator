@@ -60,6 +60,15 @@ function truncateString(string, quantitySymbols) {
 
 console.log(truncateString("Всем студентам инкубатора желаю удачи!", 10))
 
+// 4 task
+function getMinLengthWord(sentence) {
+  if (typeof sentence !== 'string' || !sentence) {
+    return null
+  }
+  return sentence.split(' ').sort((a, b) => a.length - b.length)[0]
+}
 
-
+console.log(getMinLengthWord("Всем студентам инкубатора желаю удачи."))
+console.log(getMinLengthWord(123))
+console.log(getMinLengthWord(''))
 
