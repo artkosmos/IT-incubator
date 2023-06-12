@@ -25,7 +25,7 @@
 
 // !!!!!!!!!!!!!!!!!!После решения 5 задач - поднимаем руку!!!!!!!!
 
-//6. Реализуйте функцию, котрая принимает параметрами строку и подстроку. Если все
+//6. Реализуйте функцию, которая принимает параметрами строку и подстроку. Если все
 // символы подстроки содержаться в строке - возвращает true, если нет -
 // возвращает false. Проверка проводится без учёта регистра и без учёта
 // повторяющихся символов.
@@ -79,3 +79,46 @@ function setUpperCase(sentence) {
 
 console.log(setUpperCase("всем стУдентам инкуБатора Желаю удачИ"))
 
+// 6 task
+// variant 1
+// function isIncludes(sentence, string) {
+//   const quantityObj = {}
+//   for (let i = 0; i < string.length; i++) {
+//     if (sentence.toLowerCase().includes(string[i].toLowerCase())) {
+//       if (quantityObj[string[i].toLowerCase()]) {
+//         quantityObj[string[i].toLowerCase()] += 1
+//       } else {
+//         quantityObj[string[i].toLowerCase()] = 1
+//       }
+//     } else {
+//       return false
+//     }
+//   }
+//   for (let key in quantityObj) {
+//     if (quantityObj[key] > 1) {
+//       return false
+//     }
+//   }
+//   return true
+// }
+
+// variant 2 (optimized)
+function isIncludes(sentence, string) {
+  if (string.length !== new Set(string).size) {
+    return false
+  }
+
+  for (let i = 0; i < string.length; i++) {
+    if (!sentence.toLowerCase().includes(string[i].toLowerCase())) {
+      return false
+    }
+  }
+
+  return true
+}
+
+console.log(isIncludes("Incubator", "Cut"))
+console.log(isIncludes("Incubator", "table"))
+console.log(isIncludes("Incubator", "inbba"))
+console.log(isIncludes("Incubator", "inba"))
+console.log(isIncludes("Incubator", "Incubatorrr"))
