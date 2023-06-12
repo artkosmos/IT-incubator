@@ -46,7 +46,14 @@ function repeatString(string, repeat, divider) {
 
 console.log(repeatString('hello', 3, ', '))
 
+// 2 task
 
+function checkStart (string, value) {
+  return string.toLowerCase().startsWith(value.toLowerCase())
+}
+
+console.log(checkStart("Incubator", "inc"))
+console.log(checkStart("Incubator", "ync"))
 
   
 
