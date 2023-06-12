@@ -72,3 +72,10 @@ console.log(getMinLengthWord("Всем студентам инкубатора �
 console.log(getMinLengthWord(123))
 console.log(getMinLengthWord(''))
 
+// 5 task
+function setUpperCase(sentence) {
+  return sentence.split(' ').map(item => `${item[0].toUpperCase()}${item.slice(1).toLowerCase()}`).join(' ')
+}
+
+console.log(setUpperCase("всем стУдентам инкуБатора Желаю удачИ"))
+
