@@ -1,5 +1,5 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
-import {OsType, WishesDataType, WishType} from "./App";
+import {ImportantType, WishType} from "./App";
 import {SuperForm} from "./superComponents/SuperForm";
 import SuperCheckbox from "./superComponents/SuperCheckbox";
 import {SuperSelect} from "./superComponents/SuperSelect";
@@ -9,12 +9,12 @@ export type StatusTypeForSelect = "All" | "Active" | "Completed"
 
 export type WishListPropsType = {
   wishes: WishType[]
-  osFilter: OsType
-  setOsFilter: (text: OsType) => void
+  statusFilter: ImportantType
+  changeImportantFilter: (wishlistID: string, text: ImportantType) => void
   addNewWish: (wishlistID: string, oS: FilterTypeForSelect, newValue: string) => void
   removeWish: (wishlistID: string, id: string) => void
   activityFilter: StatusTypeForSelect
-  setActivityFilter: (filterValue: StatusTypeForSelect) => void
+  changeActivityFilter: (wishlistID: string, filterValue: StatusTypeForSelect) => void
   changeWishStatus: (wishlistId: string, wishId: string, statusValue: boolean) => void
   wishlistID: string
   category: string
@@ -50,13 +50,11 @@ export const WishList = (props: WishListPropsType) => {
     setOS(value as FilterTypeForSelect)
     setError(null)
   }
-  const onChangeFilterOSHandler = (value: string) => {
-    props.setOsFilter(value as OsType)
+  const onChangeFilterImportantHandler = (value: string) => {
+    props.changeImportantFilter(props.wishlistID, value as ImportantType)
   }
   const onChangeActivityFilterHandler = (value: string) => {
-
-    props.setActivityFilter(value as StatusTypeForSelect)
-
+    props.changeActivityFilter(props.wishlistID, value as StatusTypeForSelect)
   }
 
   const changeStatusHandler = (wishId: string, value: boolean) => {
@@ -124,11 +122,11 @@ export const WishList = (props: WishListPropsType) => {
           {/*		<option value={"important"}>important</option>*/}
           {/*	</select>*/}
           {/*</div>*/}
-          <SuperSelect value={props.osFilter}
+          <SuperSelect value={props.statusFilter}
                        options={[{value: 'All', label: "All"}, {value: 'usual', label: "usual"}, {
                          value: 'important',
                          label: "important"
-                       }]} callBack={onChangeFilterOSHandler}/>
+                       }]} callBack={onChangeFilterImportantHandler}/>
         </div>
         <div>
           FILTER BY ACTIVITY:
