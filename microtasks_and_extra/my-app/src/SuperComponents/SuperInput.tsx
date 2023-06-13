@@ -1,19 +1,30 @@
-import React, { ChangeEvent, KeyboardEvent } from 'react'
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 
 type SuperInputPropsType = {
-  callBack: (value: string) => void
-  value: string
-  onKeyDownCallBack: (key: string) => void
+    callBack: (newValue: string) => void
+    value: string
+    onKeyDownCallBack: (key: string) => void
+
 }
 
-export const SuperInput = ({ callBack, value, onKeyDownCallBack }: SuperInputPropsType) => {
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    callBack(event.currentTarget.value)
-  }
+export const SuperInput: React.FC<SuperInputPropsType> = ({
+                                                              onKeyDownCallBack,
+                                                              value, callBack, ...restProps
+                                                          }) => {
 
-  const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-    onKeyDownCallBack(event.key)
-  }
+      // const [superInputValue, setSuperInputValue] = useState<string >(value)
 
-  return <input value={value} onChange={onChangeHandler} onKeyDown={onKeyDownHandler} />
-}
+        const onChangeHandler = (e:ChangeEvent<HTMLInputElement>) => {
+
+            callBack(e.currentTarget.value)
+        }
+
+        const onKeyDownHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+            onKeyDownCallBack(e.key)
+        }
+
+    return (
+        <input value={value} onChange={onChangeHandler} onKeyDown={onKeyDownHandler}/>
+    );
+};
+

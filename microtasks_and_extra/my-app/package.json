@@ -27,9 +27,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write src",
-    "lint": "eslint --fix {src}/**/*.{tsx,ts,jsx,js} --no-error-on-unmatched-pattern && stylelint --fix src/{,*/}*.scss"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
