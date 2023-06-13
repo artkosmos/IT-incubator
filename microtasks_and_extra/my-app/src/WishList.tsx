@@ -1,8 +1,9 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {useState} from 'react';
 import {ImportantType, WishType} from "./App";
 import {SuperForm} from "./superComponents/SuperForm";
 import SuperCheckbox from "./superComponents/SuperCheckbox";
 import {SuperSelect} from "./superComponents/SuperSelect";
+import {EditSpan} from "./superComponents/EditSpan";
 
 export type FilterTypeForSelect = "usual" | "important" | "Select"
 export type StatusTypeForSelect = "All" | "Active" | "Completed"
@@ -18,7 +19,7 @@ export type WishListPropsType = {
   changeWishStatus: (wishlistId: string, wishId: string, statusValue: boolean) => void
   wishlistID: string
   category: string
-
+  editStatus: (wishlistID: string, wishId: string, value: string) => void
 }
 
 export const WishList = (props: WishListPropsType) => {
@@ -59,6 +60,10 @@ export const WishList = (props: WishListPropsType) => {
 
   const changeStatusHandler = (wishId: string, value: boolean) => {
     props.changeWishStatus(props.wishlistID, wishId, value)
+  }
+
+  const editStatusHandler = (wishId: string, value: string) => {
+    props.editStatus(props.wishlistID, wishId, value)
   }
 
 
@@ -106,7 +111,7 @@ export const WishList = (props: WishListPropsType) => {
               }}/>
               <span> {el.title} </span>
               <span> / status: </span>
-              <span> {el.status} </span>
+              <EditSpan status={el.status} callBack={(value) => editStatusHandler(el.id, value)}/>
               <button onClick={() => removeWishHandler(el.id)}>X</button>
             </li>
           )

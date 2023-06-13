@@ -60,16 +60,11 @@ function App() {
     let newItem = {id: v1(), title: newValue, status: oS, checked: false}
 
     setWishes({...wishes, [wishlistId]: [newItem, ...wishes[wishlistId]]})
-
-
   }
-
 
   const removeWish = (wishlistID: string, id: string) => {
 
     setWishes({...wishes, [wishlistID]: wishes[wishlistID].filter(el => el.id !== id)})
-
-
   }
 
   // //{id: v1(), title: 'Samsung Galaxy S23', OS: "usual", checked: true, isTrue: statusValue }
@@ -113,6 +108,10 @@ function App() {
     )
   }
 
+  const editStatus = (wishlistID: string, wishId: string, value: string) => {
+    setWishes({...wishes, [wishlistID]: wishes[wishlistID].map(item => item.id === wishId ? {...item, status: value} : item)})
+  }
+
   return (
 
 
@@ -154,7 +153,7 @@ function App() {
           changeActivityFilter={changeActivityFilter}
           changeWishStatus={changeWishStatus}
           category={wl.category}
-
+          editStatus={editStatus}
         />
       })}
 
