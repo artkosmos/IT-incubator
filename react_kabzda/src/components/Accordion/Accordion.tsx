@@ -55,4 +55,4 @@ const AccordionBody = (props: AccordionBodyPropsType) => {
   )
 }
 
-export default Accordion;
+export default Accordion; 
