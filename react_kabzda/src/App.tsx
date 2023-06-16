@@ -13,6 +13,13 @@ function App() {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true)
   const [toggle, setToggle] = useState<boolean>(false)
 
+  const items = [
+    {title: 'Tea', value: 'green Indian tea'},
+    {title: 'Coffee', value: '100% arabica with cinnamon'},
+    {title: 'Cocktail', value: 'fresh and cold peach tea'},
+  ]
+
+
   return (
     <div>
       <div><OnOff/></div>
@@ -23,7 +30,12 @@ function App() {
         <Rating value={ratingValue} callBack={setRatingValue}/>
       </div>
       <div className='list'>
-        <Accordion title={"Our drink menu"} collapsed={isCollapsed} callBack={() => {setIsCollapsed(!isCollapsed)}}/>
+        <Accordion
+          onItemClick={(value)=>{alert(value)}}
+          title={"Our drink menu"} collapsed={isCollapsed}
+          callBack={() => {setIsCollapsed(!isCollapsed)}}
+          items={items}
+        />
         <SelfControlledAccordion title={"Our desserts menu"}/>
         {/*<Accordion title={"Our desserts menu"} collapsed={true}/>*/}
         <AppTitle title={'Rate it, please'} type={2}/>
