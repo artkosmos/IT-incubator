@@ -7,6 +7,8 @@ import {PageOne} from "./pages/PageOne";
 import {PageTwo} from "./pages/PageTwo";
 import {PageThree} from "./pages/PageThree";
 import {Route, Routes, Navigate, NavLink} from "react-router-dom";
+import {Page} from "./pages/Page";
+import {dataState} from "./dataState/dataState";
 export const Site = () => {
 
     const activeClass = (isActive:boolean) => isActive ? styles.active : styles.navLink
@@ -17,17 +19,17 @@ export const Site = () => {
             <div className={styles.body}>
                 <div className={styles.nav}>
                     <div><NavLink
-                        to={'/page/1'}
+                        to={'/page/0'}
                         className={({isActive}) => activeClass(isActive)}
                     >Page One
                     </NavLink></div>
                     <div><NavLink
-                        to={'/page/2'}
+                        to={'/page/1'}
                         className={({isActive}) => activeClass(isActive)}
                     >Page Two
                     </NavLink></div>
                     <div><NavLink
-                        to={'/page/3'}
+                        to={'/page/2'}
                         className={({isActive}) => activeClass(isActive)}
                     >Page Three
                     </NavLink></div>
@@ -35,10 +37,7 @@ export const Site = () => {
                 <div className={styles.content}>
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'/page1'}/>}/>
-                    <Route path={'/page1'} element={<PageOne/>}/>
-                    <Route path={'/page2'} element={<PageTwo/>}/>
-                    <Route path={'/page3'} element={<PageThree/>}/>
-                    <Route path={'/error'} element={<Error404/>}/>
+                    <Route path={'/page/:id'} element={<Page pages={dataState.pages}/>}/>
                 </Routes>
                     {/*<HomePage/>*/}
                     {/*<Content/>*/}

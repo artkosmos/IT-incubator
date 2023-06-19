@@ -14,3 +14,12 @@ export const dataState = {
 		},
 	],
 }
+
+export type DataStateType = {
+	pages: PagesType[]
+}
+
+export type PagesType = {
+	heading: number
+	about: number
+}
