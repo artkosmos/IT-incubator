@@ -1,10 +1,15 @@
 import React, {useState} from 'react';
+import {ItemsType} from "../Accordion/Accordion";
 
-export const CustomSelect = () => {
+type CustomSelectPropsType = {
+  value?: string
+  items: ItemsType[]
+  callBack: (value: string) => void
+}
 
-  const data: string[] = ['high', 'medium', 'low']
+export const CustomSelect = (props: CustomSelectPropsType) => {
+
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
-  const [title, setTitle] = useState<string>('Select one')
 
   const onClickHandler = () => {
     setIsCollapsed(!isCollapsed)
@@ -12,16 +17,18 @@ export const CustomSelect = () => {
 
   const onClickListItemHandler = (value: string) => {
     setIsCollapsed(false)
-    setTitle(value)
+    props.callBack(value)
   }
+
+  const selectedValue = props.items.find(item => props.value === item.value)
 
   return (
     <div>
-      <div onClick={onClickHandler}>{title}</div>
+      <div onClick={onClickHandler}>{selectedValue && selectedValue.title}</div>
       <ul>
-        {isCollapsed && data.map((item, index) => {
+        {isCollapsed && props.items.map((item, index) => {
           return (
-            <li onClick={() => onClickListItemHandler(item)} key={index}>{item}</li>
+            <li onClick={() => onClickListItemHandler(item.value)} key={index}>{item.title}</li>
           )
         })}
       </ul>

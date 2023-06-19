@@ -1,6 +1,6 @@
 import React from "react";
 
-type ItemsType = {
+export type ItemsType = {
   title: string
   value: string
 }
