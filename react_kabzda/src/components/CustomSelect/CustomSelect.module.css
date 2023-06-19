@@ -1,0 +1,21 @@
+.item, .title {
+  border: 1px solid black;
+  width: 100px;
+}
+
+.item:hover {
+  cursor: default;
+}
+
+.item.active {
+  background-color: #1ea7fd;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.title:hover {
+  cursor: pointer;
+}
