@@ -1,10 +1,15 @@
 import React from 'react';
 
-export const HomePage = () => {
+type HomePagePropsType = {
+	heading: number
+	about: number
+}
+
+export const HomePage = (props: HomePagePropsType) => {
 	return (
 		<div>
-			<div>HEADING</div>
-			<div>ABOUT</div>
+			<div>{props.heading}</div>
+			<div>{props.about}</div>
 		</div>
 	);
 };

@@ -1,11 +1,16 @@
 import React from 'react';
 
-export const Content = () => {
+type ContentPagePropsType = {
+	heading: number
+	about: number
+}
+
+export const Content = (props: ContentPagePropsType) => {
 	return (
 		<div>
 			<div>
-				<div>HEADING</div>
-				<div>ABOUT</div>
+				<div>{props.heading}</div>
+				<div>{props.about}</div>
 			</div>
 			<div style={{display: "flex", justifyContent: "center"}}>
 				<button  style={{margin: "20px", width: "100px", height: "50px"}}>Back</button>

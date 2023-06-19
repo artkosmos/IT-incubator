@@ -1,11 +1,6 @@
 import React from 'react';
 import styles from './Site.module.css'
-import {HomePage} from "./HomePage";
-import {Content} from "./Content";
 import {Error404} from "./pages/Error404";
-import {PageOne} from "./pages/PageOne";
-import {PageTwo} from "./pages/PageTwo";
-import {PageThree} from "./pages/PageThree";
 import {Route, Routes, Navigate, NavLink} from "react-router-dom";
 import {Page} from "./pages/Page";
 import {dataState} from "./dataState/dataState";
@@ -38,11 +33,8 @@ export const Site = () => {
                 <Routes>
                     <Route path={'/'} element={<Navigate to={'/page1'}/>}/>
                     <Route path={'/page/:id'} element={<Page pages={dataState.pages}/>}/>
+                    <Route path={'/*'} element={<Error404/>}/>
                 </Routes>
-                    {/*<HomePage/>*/}
-                    {/*<Content/>*/}
-                    {/*<Error404/>*/}
-
                 </div>
             </div>
         </div>
