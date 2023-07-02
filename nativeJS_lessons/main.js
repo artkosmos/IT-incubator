@@ -85,42 +85,29 @@ finally - срабатывает вне зависимости от того з�
 // ============================================= Задачи на отработку =====================================================
 
 // ============================================= Задача 1 =====================================================
-const p = new Promise((resolve, reject) => {
-    reject(Error('The Fails!'))
-})
-p.catch(error => console.log(error.message)) // The Fails!
-p.catch(error => console.log(error.message)) // The Fails!
-// отработают 2, т.к они независимы и каждый создает свой объект с одним и тем же промисом
+// const p = new Promise((resolve, reject) => {
+//     reject(Error('The Fails!'))
+// })
+// p.catch(error => console.log(error.message)) // The Fails!
+// p.catch(error => console.log(error.message)) // The Fails!
+// // отработают 2, т.к они независимы и каждый создает свой объект с одним и тем же промисом
 
 
 // ============================================= Задача 2 =====================================================
-/*
-!!!!
-const p = new Promise((resolve, reject) => {
-    reject(Error('The Fails!'))
-  })
-  .catch(error => console.log(error))
-  .then(error => console.log(error))
-!!!!
- */
+// const a = new Promise((resolve, reject) => {
+//     reject(Error('The Fails!'))
+//   })
+//   .catch(error => console.log(error)) // The Fails!
+//   .then(error => console.log(error)) // undefined
+// // после catch возвращается промис в статусе pending и без значения, then отрабатывает, но возвращается undefined
 
-
-// const p = new Promise((resolve, reject) => {
-//     reject('The Fails!')
-// })
-//     .catch(error => console.log(error))
-//     .then(error => console.log(error))
 
 // ============================================= Задача 3 =====================================================
-/*
-!!!!
-const p = new Promise((resolve, reject) => {
-    reject(Error('The Fails!'))
-  })
-  .catch(error => console.log(error.message))
-  .catch(error => console.log(error.message))
-!!!!
- */
+// const b = new Promise((resolve, reject) => {
+//     reject(Error('The Fails!'))
+//   })
+//   .catch(error => console.log(error.message)) // The Fails!
+//   .catch(error => console.log(error.message)) // второй catch не срабатывает (не ловит нейтральный промис)
 
 
 // ============================================= Задача 4 =====================================================
