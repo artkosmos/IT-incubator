@@ -111,60 +111,51 @@ finally - срабатывает вне зависимости от того з�
 
 
 // ============================================= Задача 4 =====================================================
-/*
-!!!!
-new Promise((resolve, reject) => {
-    resolve('Success!')
-  })
-  .then(() => {
-    throw Error('Oh noes!')
-  })
-  .catch(error => {
-    return "actually, that worked"
-  })
-  .catch(error => console.log(error.message))
-!!!!
- */
+// new Promise((resolve, reject) => {
+//     resolve('Success!')
+//   })
+//   .then(() => {
+//     throw Error('Oh noes!') // попадает сюда, но выбрасывает ошибку, поэтому идет в catch
+//   })
+//   .catch(error => {
+//     return "actually, that worked" // catch принимает Error, но return другую строку
+//   })
+//   .catch(error => console.log(error.message)) // второй catch не срабатывает после выполненного первого
+// // в итоге в консоли ничего не будет
 
 // new Promise((resolve, reject) => {
 //     resolve('Success!')
 // })
 //     .then(() => {
-//        console.log(Error('Oh noes!'))
+//        return Error('Oh noes!') // не выкидываем ошибку, а делаем return, соответственно catch не срабатывает
 //     })
-//     .catch(error => {
+//     .catch(error => { // не словит
 //         console.log(error)
 //         return "actually, that worked"
 //     })
-//     .catch(error => console.log(error.message))
+//     .catch(error => console.log(error.message)) // не словит
+//     .then(error => console.log(error)) // после последнего then ловит return и выводить в консоль сообщение
 
 // ============================================= Задача 5 =====================================================
-/*
-!!!!
-Promise.resolve('Success!')
-  .then(data => {
-    return data.toUpperCase()
-  })
-  .then(data => {
-    console.log(data)
-  })
-!!!!
- */
+// Promise.resolve('Success!') // отрабатывает resolve
+//   .then(data => { // принял значение
+//     return data.toUpperCase() // привел к высшему регистру и вернул
+//   })
+//   .then(data => { // поймал значение и вывел в консоль
+//     console.log(data)
+//   })
+// // в консоли будет SUCCESS!
 
 // ============================================= Задача 6 =====================================================
-/*
-!!!!
-Promise.resolve('Success!')
-  .then(data => {
-    return data.toUpperCase()
+Promise.resolve('Success!') // отрабатывает resolve
+  .then(data => { // принял значение
+    return data.toUpperCase() // привел к высшему регистру и вернул
   })
   .then(data => {
-    console.log(data)
-    return data
+    console.log(data) // поймал значение и вывел в консоль
+    return data // вернул это же значение
   })
-  .then(console.log)
-!!!!
- */
+  .then(console.log) // попадает в then и сразу консолит пришедшее значение(короткий синтаксис)
 
 // ============================================= Задача 7 =====================================================
 /*
