@@ -259,69 +259,59 @@ finally - срабатывает вне зависимости от того з�
 
 
 // ============================================= Задача 14 =====================================================
-Promise.reject("Api Error") // reject
-    .catch(null) // ловит reject и ждет callback, но т.к. его нет, а только значение null, то этот catch игнорируется
-    .then(data => console.log('ok')) // miss
-    .catch(error => console.log(error)) // словил ошибку, вместо проигнорированного catch и вывел ее сообщение
-    .then(data => console.log('ok')) // словил промис после catch и делает вывод в консоль
-// в консоли будет "Api Error" и "оk"
+// Promise.reject("Api Error") // reject
+//     .catch(null) // ловит reject и ждет callback, но т.к. его нет, а только значение null, то этот catch игнорируется
+//     .then(data => console.log('ok')) // miss
+//     .catch(error => console.log(error)) // словил ошибку, вместо проигнорированного catch и вывел ее сообщение
+//     .then(data => console.log('ok')) // словил промис после catch и делает вывод в консоль
+// // в консоли будет "Api Error" и "оk"
 
 
 // ============================================= Задача 15 =====================================================
-/*
-!!!!
-Promise.resolve()
-    .then(() => {
-        return "1";
-    })
-    .finally(data => {
-        console.log(data);
-        return "2";
-    })
-    .then(data => console.log(data))
-!!!!
- */
+// Promise.resolve() // resolve
+//     .then(() => {
+//         return "1"; // возвращает "1"
+//     })
+//     .finally(data => { // finally ничего не принимает и не возвращает, поэтому консолит undefined
+//         console.log(data);
+//         return "2";
+//     })
+//     .then(data => console.log(data)) // в data проваливается значение сквозь finally(дырявый)
+//   // в консоли будет undefined и "1"
+
+
 
 // ============================================= Задача 16 =====================================================
-/*
-!!!!
-Promise.reject()
-    .finally(data => {
-        console.log('finally'); // => "finally"
-    })
-!!!!
- */
+// Promise.reject()
+//     .finally(data => {
+//         console.log('finally');
+//     })
+// // finally в консоли
 
 // ============================================= Задача 17 =====================================================
-/*
-!!!!
-Promise.resolve()
-    .then(() => console.log(1))
-    .then(() => console.log(2))
-
-Promise.resolve()
-    .then(() => console.log(11))
-    .then(() => console.log(12))
-!!!!
- */
+// Promise.resolve()
+//     .then(() => console.log(1)) // 1
+//     .then(() => console.log(2)) // 2
+//
+// Promise.resolve()
+//     .then(() => console.log(11)) // 11
+//     .then(() => console.log(12)) // 12
+// // в консоли 1, 11, 2, 12 (асинхронное выполнение)
 
 // ============================================= Задача 18 =====================================================
-/*
-!!!!
-Promise.resolve()
-    .then(() => console.log(1))
-    .then(() => { console.log(2); throw new Error(); })
-    .catch(() => console.log(3))
-    .then(() => console.log(4))
-
-Promise.resolve()
-    .then(() => console.log(11))
-    .then(() => { console.log(12); throw new Error(); })
-    .catch(() => console.log(13))
-    .then(() => console.log(14))
-!!!!
- */
-
+// Promise.resolve()
+//     .then(() => console.log(1))
+//     .then(() => { console.log(2); throw new Error(); })
+//     .catch(() => console.log(3))
+//     .then(() => console.log(4))
+//
+// Promise.resolve()
+//     .then(() => console.log(11))
+//     .then(() => { console.log(12); throw new Error(); })
+//     .catch(() => console.log(13))
+//     .then(() => console.log(14))
+//
+// // в консоли 1, 11, 2, 12, 3, 13, 4, 14
 
 
 
