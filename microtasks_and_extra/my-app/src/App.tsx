@@ -1,7 +1,6 @@
-import React, {useReducer, useState} from 'react';
+import React from 'react';
 import './App.css';
 import {TaskType, Todolist} from './Todolist';
-import {v1} from 'uuid';
 import {AddItemForm} from './AddItemForm';
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@mui/material";
 import {Menu} from "@mui/icons-material";
@@ -27,12 +26,13 @@ export type TasksStateType = {
 function App() {
 
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
+    console.log(todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
     const dispatch = useDispatch();
 
     function addTodolist(title: string) {
-        addTodolistAC(title)
+        dispatch(addTodolistAC(title))
     }
 
     return (
@@ -59,10 +59,10 @@ function App() {
                             let tasksForTodolist = allTodolistTasks;
 
                             if (tl.filter === "active") {
-                                tasksForTodolist = allTodolistTasks.filter(t => t.isDone === false);
+                                tasksForTodolist = allTodolistTasks.filter(t => !t.isDone);
                             }
                             if (tl.filter === "completed") {
-                                tasksForTodolist = allTodolistTasks.filter(t => t.isDone === true);
+                                tasksForTodolist = allTodolistTasks.filter(t => t.isDone);
                             }
 
                             return <Grid item key={tl.id}>
