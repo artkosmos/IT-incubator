@@ -1,4 +1,6 @@
-export const SlowComponent = () => {
+import {memo} from "react";
+
+export const SlowComponent = memo(() => {
   console.log('SlowComponent re-render...');
 
   let now = performance.now();
@@ -8,4 +10,4 @@ export const SlowComponent = () => {
   }
 
   return <p>I am a very slow component tree.</p>;
-};
+})
