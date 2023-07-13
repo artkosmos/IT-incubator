@@ -91,15 +91,16 @@ fetch(USERS_URL)
 
     console.log('error', error)
   })
+
 // переписать коды выше на async await
 const fooAsync = async () => {
   try {
     const usersResponse = await fetch(USERS_URL)
-    const users = await usersResponse.json()
+    const users = await usersResponse.json() // декодирование
     const firstUser = users[0].id
 
     const todoResponse = await fetch(`${TODOS_URL}?userId=${firstUser}`)
-    const todoForFirstUser = await todoResponse.json()
+    const todoForFirstUser = await todoResponse.json() // декодирование
 
     return todoForFirstUser
 
@@ -113,40 +114,54 @@ fooAsync().then(data => console.log(data) )
 
 //============================== Задача 1 ================================
 
-/*
-Требуется переписать данный код, который использует then, catch и finally, в код,
-который использует исключительно async await и try, catch, finally.
+// Требуется переписать данный код, который использует then, catch и finally, в код,
+// который использует исключительно async await и try, catch, finally.
 
 
 const POSTS_URL = 'https://jsonplaceholder.typicode.com/posts';
 let isLoading = false;
-const createNewPost = () => {
-    isLoading = true;
-    fetch(POSTS_URL, {
-        method: 'POST',
-    })
-        .then((response) => response.json())
-        .then((result) => {
-            console.log('result', result)
-        })
-        .catch((error) => {
-            console.log('error', error)
-        })
-        .finally(() => {
-            isLoading = false;
-        });
-};
-createNewPost();
- */
+// const createNewPost = () => {
+//     isLoading = true;
+//     fetch(POSTS_URL, {
+//         method: 'POST',
+//     })
+//         .then((response) => response.json())
+//         .then((result) => {
+//             console.log('result', result)
+//         })
+//         .catch((error) => {
+//             console.log('error', error)
+//         })
+//         .finally(() => {
+//             isLoading = false;
+//         });
+// };
+// createNewPost();
 
+// переписанный код на async await
 
+const createNewPostAsync = async () => {
+  isLoading = true // запускается крутилка к примеру
+
+  try {
+    const response = await fetch(POSTS_URL, {method: 'POST'})
+    return await response.json()
+  }
+  catch (error) {
+    console.log(error)
+  }
+  finally {
+    isLoading = false
+  }
+}
+
+createNewPostAsync().then() // обрабатываем return
 
 //============================== Задача 2 ================================
 /*
 Требуется переписать данный код, который использует then и catch, в код, который
 использует исключительно async await и try, catch.
 
-const TODOS_URL = 'https://jsonplaceholder.typicode.com/todos';
 const getTodosByIds = (ids) => {
 const requests = ids.map((id) => fetch(`${TODOS_URL}/${id}`));
 Promise.all(requests)
@@ -163,4 +178,19 @@ console.log(error);
 }
 getTodosByIds([43, 21, 55, 100, 10]);
  */
+
+const getTodosByIdAsync = async (array) => {
+  try {
+    const arrayOfRequests = array.map(id => fetch(`${TODOS_URL}/${id}`))
+    const responses = await Promise.all(arrayOfRequests)
+    const result = await Promise.all(responses.map(item => item.json()))
+
+    return result
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
+
+getTodosByIdAsync().then(data => console.log(data))
 
